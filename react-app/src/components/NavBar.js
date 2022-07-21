@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
@@ -25,6 +24,16 @@ const NavBar = () => {
         <li>
           <NavLink to='/users' exact={true} activeClassName='active'>
             Users
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='/upload' exact={true} activeClassName='active'>
+            Upload
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='/feed' exact={true} activeClassName='active'>
+            Feed
           </NavLink>
         </li>
         <li>
