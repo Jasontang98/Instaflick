@@ -10,8 +10,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    prof_pic_url = db.Column(db.String(255), nullable=True, default='https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg')
-    description = db.Column(db.String(500), nullable=True)
+    prof_pic_url = db.Column(db.String(255), default='https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg')
+    description = db.Column(db.String(500))
 
     @property
     def password(self):
