@@ -11,9 +11,10 @@ ENV REACT_APP_BASE_URL=https://instaflick-app.herokuapp.com/
 ENV FLASK_APP=app
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=True
-# Set the directory for upcoming commands to /var/www
 
+# Set the directory for upcoming commands to /var/www
 WORKDIR /var/www
+
 # Copy all the files from your repo to the working directory
 COPY . .
 
