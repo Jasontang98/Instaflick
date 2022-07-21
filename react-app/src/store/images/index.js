@@ -130,7 +130,6 @@ const imageReducer = (state = initialState, action) => {
     case ADD_IMAGE:
       return { ...state, [action.image.id]: action.image };
     case EDIT_IMAGE:
-      console.log("++++++++++++++++++++++++");
       return { ...state, [action.image.id]: { ...action.image } };
     case REMOVE_IMAGE:
       return delete { ...state, [action.id]: action.id };
