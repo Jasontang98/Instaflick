@@ -7,19 +7,24 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import { authenticate } from "./store/session";
+import * as sessionActions from "./store/session";
 import Images from "./components/Feed";
-import UploadImage from "./components/UploadImage";
+// import UploadImage from "./components/UploadImage";
 import SingleImage from "./components/SingleImage";
 import EditImage from "./components/EditImage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  // const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    dispatch(sessionActions.restoreUser()).then(() => setLoaded(true));
+  }, [dispatch]);
 
   useEffect(() => {
     (async () => {
-      await dispatch(authenticate());
+      await dispatch(sessionActions.authenticate());
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -30,7 +35,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar loaded={loaded} />
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm />
@@ -53,9 +58,9 @@ function App() {
         <Route path="/images/:id" exact={true}>
           <SingleImage />
         </Route>
-        <Route path="/upload" exact={true}>
+        {/* <Route path="/upload" exact={true}>
           <UploadImage />
-        </Route>
+        </Route> */}
         <Route path="/images/:id/edit" exact={true}>
           <EditImage />
         </Route>
