@@ -1,4 +1,4 @@
-import { getAllImages } from "../../../../react-app/src/store/images/index.js";
+import { getAllImages } from "../../../../react-app/src/store/images.js";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
