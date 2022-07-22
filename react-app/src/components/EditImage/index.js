@@ -1,4 +1,4 @@
-import { editSingleImage } from "../../store/images/index";
+import { editSingleImage } from "../../store/images";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory, Redirect } from "react-router-dom";
