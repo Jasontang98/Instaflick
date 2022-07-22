@@ -7,54 +7,44 @@ from datetime import datetime
 from app.models import User, Image, Comment, db, Image_Like, Comment_Like
 from app.config import Config
 from app.aws_s3 import *
-from app.forms import image_form
-
+from app.forms import image_form, comment_form
 
 image_routes = Blueprint('images', __name__)
 
+
+######## IMAGES ########
+
+# Edit Single Image Description
+
 @image_routes.route('/edit/<int:id>', methods=['PUT'])
-@login_required
+# @login_required
 def edit_image(id):
     data = request.json
-    print (data, 'fffuuuuuuuuuuuuuuuuuuuuuuuckkkkkkkkkk')
     image = Image.query.get(id)
     image.description = request.json['description']
     db.session.commit()
     return image.to_dict()
-    # image = Image.query.get(id)
-    # form = image_form.ImageForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
-    # if form.validate_on_submit():
-    #
-    #     print(image.description, "Image description\n\n\n\n")
-    #     # image.description = data['description']
-    #     image.description = form.description.data
-
-    #     print('SOMETHING ELSE FOOL \n \n')
-    #     db.session.add(image)
-    #     db.session.commit()
-    #     return image.to_dict()
-    # return 'Error: Could not edit image'
 
 
-# all images on feed
+# Get All Images on the Feed Page
 @image_routes.route('/feed')
-@login_required
+# @login_required
 def all_images():
     images = Image.query.all()
     data = [image.to_dict() for image in images]
     return {'images': data}
 
-# get single image
+# Get Single Image
 @image_routes.route('/<int:id>')
+# @login_required
 def get_single_image(id):
     image = Image.query.get(id)
     return image.to_dict()
 
 
-# post a single image
+# Post a Single Image
 @image_routes.route('/', methods=['POST'])
-@login_required
+# @login_required
 def submit_single_image():
     if "file" not in request.files:
         return "No user_file key in request.files"
@@ -78,13 +68,61 @@ def submit_single_image():
     else:
         return 'No File Attached!'
 
-
-
-
+# Delete a Single Image
 @image_routes.route('/<int:id>', methods=['DELETE'])
-@login_required
+# @login_required
 def delete_image(id):
     image = Image.query.get(id)
     db.session.delete(image)
     db.session.commit()
     return image.to_dict()
+
+
+
+######## COMMENTS ########
+
+# Get All Comments
+@image_routes.route('/<int:id>/comments')
+# @login_required
+def get_all_comments(id):
+    comments = Comment.query.filter_by(image_id=id).all()
+    data = [comment.to_dict() for comment in comments]
+    return {'comments': data}
+
+
+# Post a Single Comment
+@image_routes.route('/<int:id>', methods=['POST'])
+# @login_required
+def submit_single_comment(id):
+    form = comment_form.CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    # if form.validate_on_submit():
+    comment = Comment(
+        user_id=form.user_id.data,
+        image_id=form.image_id.data,
+        comment=form.comment.data
+    )
+    db.session.add(comment)
+    db.session.commit()
+    return comment.to_dict()
+
+
+# # Edit a Single Comment
+@image_routes.route('/<int:id>/comments/<int:comment_id>', methods=['PUT'])
+# @login_required
+def edit_comment(id, comment_id):
+    data = request.json
+    comment = Comment.query.get(comment_id)
+    comment.comment = request.json['comment']
+    db.session.commit()
+    return comment.to_dict()
+
+
+# #Delete a Single Comment
+@image_routes.route('/<int:id>/comments/<int:comment_id>', methods=['DELETE'])
+# @login_required
+def delete_comment(id, comment_id):
+    comment = Comment.query.get(comment_id)
+    db.session.delete(comment)
+    db.session.commit()
+    return comment.to_dict()
