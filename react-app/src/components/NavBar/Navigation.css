@@ -1,0 +1,8 @@
+div {
+    display: inline;
+    padding-inline: 2.4px;
+}
+
+.navBar {
+    display: flex;
+}
