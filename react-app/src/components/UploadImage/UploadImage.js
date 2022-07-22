@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { uploadImage } from "../../store/images/index";
+import { uploadImage } from "../../store/images";
 // import './upload.css';
 
 const UploadImage = ({ setShowModal }) => {
