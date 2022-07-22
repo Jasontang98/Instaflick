@@ -7,7 +7,7 @@ import { getSingleImage, deleteSingleImage } from "../../store/images";
 // } from '../../store/comments';
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useHistory, NavLink } from "react-router-dom";
+import { useParams, useHistory, NavLink, Redirect } from "react-router-dom";
 import "./SingleImage.css";
 
 const SingleImage = () => {
@@ -15,13 +15,13 @@ const SingleImage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const oneImage = useSelector((state) => state.images[id]);
-  console.log(oneImage, "Image Props ^^^^^^");
-  const account = useSelector((state) => state.session.user);  console.log(account.id, "Acount ++++");
+  const sessionUser = useSelector((state) => state.session.user);
+
+  const account = useSelector((state) => state.session.user);
   // const comments = Object.values(useSelector((state) => state.comments));
   // const [comment, setComment] = useState('');
   const [isLoaded, setLoaded] = useState(false);
   const [validationErrors, setValidationErrors] = useState([]);
-  // console.log(account, '------------')
 
   useEffect(() => {
     // if (!account) history.push('/');
@@ -66,6 +66,8 @@ const SingleImage = () => {
     // 	.then(dispatch(getSingleImage(id)))
     // 	.then(setComment(''));
   };
+
+  if (!sessionUser) return <Redirect to="/signup" />;
 
   return (
     isLoaded && (

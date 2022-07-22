@@ -1,14 +1,15 @@
 import { editSingleImage } from "../../store/images/index";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Redirect } from "react-router-dom";
 
 const EditImage = () => {
   const dispatch = useDispatch();
   const image = useParams();
-    console.log(image, "%%%%%%%%%%%%%")
+
   const user = useSelector((state) => state.session.user);
   const images = useSelector((state) => state.images);
+  const sessionUser = useSelector((state) => state.session.user);
 
   const currentImage = images[image?.id];
   // const images = Object.values(imagesObject);
@@ -53,6 +54,8 @@ const EditImage = () => {
   //     const uploadFile = e.target.files[0];
   //     setFile(uploadFile);
   //   };
+
+  if (!sessionUser) return <Redirect to="/signup" />;
 
   return (
     <div className="tester">
