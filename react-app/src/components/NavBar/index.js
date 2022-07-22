@@ -16,10 +16,13 @@ const NavBar = ({ loaded }) => {
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/sign-up">Sign Up</NavLink>
+        <NavLink to="/signup">Sign Up</NavLink>
         <NavLink to="/login" exact={true} activeClassName="active">
           Login
         </NavLink>
+        {/* <NavLink to="/feed" exact={true} activeClassName="active">
+          Feed
+        </NavLink> */}
       </>
     );
   }
@@ -32,7 +35,7 @@ const NavBar = ({ loaded }) => {
       </div>
       <div></div>
       {/* <div>
-        <NavLink to="/sign-up" exact={true} activeClassName="active">
+        <NavLink to="/signup" exact={true} activeClassName="active">
           Sign Up
         </NavLink>
       </div> */}
@@ -44,18 +47,20 @@ const NavBar = ({ loaded }) => {
       {/* <NavLink to="/upload" exact={true} activeClassName="active">
         Upload
       </NavLink> */}
-      <div>
-        <NavLink to="/feed" exact={true} activeClassName="active">
-          Feed
-        </NavLink>
-      </div>
+      <div></div>
 
       {/* <LogoutButton /> */}
 
       {sessionUser ? (
-        <UploadImageModal></UploadImageModal>
+        <>
+          <NavLink to="/feed" exact={true} activeClassName="active">
+            Feed
+          </NavLink>
+          <div />
+          <UploadImageModal />
+        </>
       ) : (
-        <NavLink exact to="/sign-up" />
+        <NavLink exact to="/signup" />
       )}
       {loaded && sessionLinks}
     </nav>

@@ -11,14 +11,15 @@ const removeUser = () => ({
   type: REMOVE_USER,
 });
 
+
+const initialState = { user: null };
+
 export const restoreUser = () => async (dispatch) => {
   const response = await fetch("/api/session");
   const data = await response.json();
   dispatch(setUser(data.user));
   return response;
 };
-
-const initialState = { user: null };
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch("/api/auth/", {
@@ -74,9 +75,7 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-export const signUp = (user) => async (dispatch) => {
-  const { username, email, password } = user;
-  console.log(user)
+export const signUp = (username, email, password) => async (dispatch) => {
   const response = await fetch("/api/auth/signup", {
     method: "POST",
     headers: {
