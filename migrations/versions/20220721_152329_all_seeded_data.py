@@ -1,8 +1,8 @@
-"""all_seeded_data
+"""all_tables
 
-Revision ID: e864c4f4d239
+Revision ID: de180d6a045f
 Revises: ffdc0a98111c
-Create Date: 2022-07-21 15:23:29.450525
+Create Date: 2022-07-20 10:08:37.216263
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e864c4f4d239'
+revision = 'de180d6a045f'
 down_revision = 'ffdc0a98111c'
 branch_labels = None
 depends_on = None
