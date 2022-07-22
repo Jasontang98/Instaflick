@@ -16,7 +16,7 @@ image_routes = Blueprint('images', __name__)
 @login_required
 def edit_image(id):
     data = request.json
-    print (data, '-------------------------------------')
+    print (data, 'fffuuuuuuuuuuuuuuuuuuuuuuuckkkkkkkkkk')
     image = Image.query.get(id)
     image.description = request.json['description']
     db.session.commit()
