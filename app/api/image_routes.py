@@ -111,11 +111,24 @@ def submit_single_comment(id):
 @image_routes.route('/<int:id>/comments/<int:comment_id>', methods=['PUT'])
 @login_required
 def edit_comment(id, comment_id):
-    data = request.json
+    # image = Image.query.get(id)
     comment = Comment.query.get(comment_id)
-    comment.comment = request.json['comment']
-    db.session.commit()
-    return comment.to_dict()
+    form = comment_form.EditCommentForm()
+    print("\n\n\n\n", form.comment.data)
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        comment.comment = form.comment.data
+        print("this is comment \n\n\n", comment)
+        db.session.add(comment)
+        db.session.commit()
+        return comment.to_dict()
+    # data = request.jso
+    # comment = Comment.query.get(comment_id)
+    # comment.comment = request.json['comment']
+    # db.session.add(comment)
+    # print(comment.comment, 'WHAT IS THIS')
+    # db.session.commit()
+    # return comment.to_dict()
 
 
 # #Delete a Single Comment

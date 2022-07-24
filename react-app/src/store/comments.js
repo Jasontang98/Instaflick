@@ -60,28 +60,29 @@ export const addAComment = (data) => async (dispatch) => {
 	}
 };
 
-export const deleteAComment = (image_id, id) => async (dispatch) => {
-	const response = await fetch(`/api/images/${image_id}/comments/${id}`, {
+export const deleteAComment = (image_id, comment_id) => async (dispatch) => {
+	console.log(image_id, '111111111111111111111')
+	const response = await fetch(`/api/images/${image_id}/comments/${comment_id}`, {
 		method: 'DELETE',
 	});
 	if (response.ok) {
-		dispatch(deleteComment(id));
+		dispatch(deleteComment(comment_id));
 	}
 };
 
 export const editAComment = (data, id) => async (dispatch) => {
-	const { user_id, image_id, comment } = data;
-	const response = await fetch(`/api/images/${image_id}/comments/${id}`, {
+// 	// const { user_id, id, comment } = data;
+	const formData = new FormData()
+	formData.append("comment", data.comment)
+	// formData.append("id", data.id)
+	console.log("data, eirjhgueirgherui", data)
+	const response = await fetch(`/api/images/${data}/comments/${id}`, {
 		method: 'PUT',
-		body: JSON.stringify({
-			user_id,
-			image_id,
-			comment,
-		}),
+		body: formData
 	});
 	if (response.ok) {
 		const data = await response.json();
-		dispatch(editComment(comment));
+		dispatch(editComment(data));
 		return data;
 	}
 };
@@ -103,15 +104,17 @@ const commentsReducer = (state = initialState, action) => {
 		case ADD_COMMENT:
 			return { ...state, [action.comment.id]: action.comment };
 		case EDIT_COMMENT:
-			return {
-				...state,
-				comments: state.comments.map((comment) => {
-					if (comment.id === action.comment.id) {
-						return action.comment;
-					}
-					return comment;
-				}),
-			};
+			// return {
+			// 	...state,
+			// 	comments: state.comments.map((comment) => {
+			// 		if (comment.id === action.comment.id) {
+			// 			return action.comment;
+			// 		}
+			// 		return comment;
+			// 	}),
+			// };
+			console.log("this is inside of the comment reducer")
+			return {...state, [action.comment.id]: action.comment};
 		case DELETE_COMMENT:
 			return delete { ...state, [action.id]: action.id };
 		default:
