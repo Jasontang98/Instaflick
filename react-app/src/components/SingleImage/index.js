@@ -15,14 +15,17 @@ const SingleImage = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const { id } = useParams();
+	console.log("id, werhjnfguierhgiuhe", id)
 	const oneImage = useSelector((state) => state.images[id]);
+	// console.log("one image ewgjeruoigjerouig", oneImage)
 	const sessionUser = useSelector((state) => state.session.user);
 	const account = useSelector((state) => state.session.user);
 	const comments = Object.values(useSelector((state) => state.comments));
+	console.log("comments heuigheriug", comments)
 	const [comment, setComment] = useState('');
 	const [isLoaded, setLoaded] = useState(false);
 	const [validationErrors, setValidationErrors] = useState([]);
-  console.log(account, '000000000000000')
+	// console.log(account, '000000000000000');
 
 	useEffect(() => {
 		// if (!account) history.push('/');
@@ -60,12 +63,26 @@ const SingleImage = () => {
 		const data = {
 			comment,
 			user_id: account?.id,
-			image_id: oneImage?.id,
+			image_id: id,
 		};
-		await dispatch(addAComment(data))
-			// .then(dispatch(getSingleImage(id)))
-			setComment('');
+		// console.log(data, 'THIS IS THE DATA')
+
+		await dispatch(addAComment(data));
+		// .then(dispatch(getSingleImage(id)))
+		setComment('');
 	};
+
+	const editSubmit = async (e) => {
+		e.preventDefault()
+		const data = {
+			comment,
+			id: oneImage?.id,
+			comment_id: comments?.id,
+		}
+
+		await dispatch(editAComment(data))
+		setComment("")
+	}
 
 	if (!sessionUser) return <Redirect to="/signup" />;
 
@@ -91,6 +108,8 @@ const SingleImage = () => {
 										className="single-image-submit-btn"
 										exact
 										to={`/images/${id}/edit`}
+										value={comment}
+										onChange={(e) => setComment(e.target.value)}
 									>
 										Edit
 									</NavLink>
@@ -122,8 +141,7 @@ const SingleImage = () => {
 											{/* {comment?.user_id} */}
 										</p>
 										<div className="dlt-button-container">
-											{comment?.user_id ===
-											account.id ? (
+											{comment?.user_id === account.id ? (
 												<button
 													className="delete-comment-btn"
 													onClick={() =>
@@ -140,9 +158,8 @@ const SingleImage = () => {
 												<></>
 											)}
 										</div>
-                    <div className="edit-button-container">
-											{comment?.user_id ===
-											account.id ? (
+										<div className="edit-button-container">
+											{comment?.user_id === account.id ? (
 												<button
 													className="edit-comment-btn"
 													onClick={() =>
@@ -186,6 +203,21 @@ const SingleImage = () => {
 								Submit
 							</button>
 						</form>
+						{/* <form onSubmit={editSubmit}>
+							<textarea
+								className="something"
+								value={comment}
+								required
+								onChange={((e) => setComment(e.tasrget.value))}
+							/>
+								<button
+								className="single-image-submit-btn"
+								onClick={notLoggedIn}
+								type="submit"
+							>
+								Submit
+							</button>
+						</form> */}
 					</div>
 				</div>
 			</div>
