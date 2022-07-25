@@ -1,7 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from image_like import image_likes
+from .image_like import image_likes
 
 
 class User(db.Model, UserMixin):
@@ -37,4 +37,3 @@ class User(db.Model, UserMixin):
 
     image = db.relationship('Image', secondary=image_likes, backref='users', cascade='all, delete-orphan')
     comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
-
