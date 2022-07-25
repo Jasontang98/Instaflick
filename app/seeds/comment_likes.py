@@ -1,12 +1,12 @@
-from app.models import db, Comment_Like
+from app.models import db, comment_likes
 
 # Adds a demo user, you can add other users here if you want
 def seed_comment_likes():
-    comment_like1 = Comment_Like(
+    comment_like1 = comment_likes(
         user_id=3, comment_id=2)
-    comment_like2 = Comment_Like(
+    comment_like2 = comment_likes(
         user_id=2, comment_id=1)
-    comment_like3 = Comment_Like(
+    comment_like3 = comment_likes(
         user_id=1, comment_id=3)
 
     db.session.add(comment_like1)

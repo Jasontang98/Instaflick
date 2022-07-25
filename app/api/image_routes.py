@@ -4,7 +4,7 @@ import botocore
 from flask import Blueprint, request, jsonify, render_template
 from flask_login import login_required, current_user
 from datetime import datetime
-from app.models import User, Image, Comment, db, image_likes, Comment_Like
+from app.models import User, Image, Comment, db, image_likes, comment_likes
 from app.config import Config
 from app.aws_s3 import *
 from app.forms import image_form, comment_form
