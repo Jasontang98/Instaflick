@@ -1,3 +1,4 @@
+from tkinter import CASCADE
 from .db import db
 from .image_like import image_likes
 
@@ -19,5 +20,5 @@ class Image(db.Model):
             'created_at': self.created_at
         }
 
-    user = db.relationship('User', secondary=image_likes, back_populates='images')
+    user = db.relationship('User', secondary=image_likes, back_populates='images', single_parent=True, cascade='all, delete-orphan')
     comment = db.relationship('Comment', back_populates='image', cascade='all, delete-orphan')
