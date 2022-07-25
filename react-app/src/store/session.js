@@ -14,12 +14,12 @@ const removeUser = () => ({
 
 const initialState = { user: null };
 
-export const restoreUser = () => async (dispatch) => {
-  const response = await fetch("/api/session");
-  const data = await response.json();
-  dispatch(setUser(data.user));
-  return response;
-};
+// export const restoreUser = () => async (dispatch) => {
+//   const response = await fetch("/api/session");
+//   const data = await response.json();
+//   dispatch(setUser(data.user));
+//   return response;
+// };
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch("/api/auth/", {
