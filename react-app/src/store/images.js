@@ -55,6 +55,7 @@ export const getSingleImage = (id) => async (dispatch) => {
 
 // GET USERS' IMAGES
 export const getImagesByUser = (userId) => async (dispatch) => {
+  console.log(userId, "$$$$$$$$$ USER ID $$$$$$$$$");
   const response = await fetch(`/api/images/${userId}`);
 
   if (response.ok) {

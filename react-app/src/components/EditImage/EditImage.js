@@ -12,6 +12,11 @@ const EditImage = ({ setShowModal }) => {
   const sessionUser = useSelector((state) => state.session.user);
 
   const currentImage = images[image?.id];
+  // const images = Object.values(imagesObject);
+
+  //   const [title, setTitle] = useState(currentImage.title);
+  //   const [imageUrl, setImageUrl] = useState(currentImage.imageUrl);
+  //   const [file, setFile] = useState("");
   const [description, setDescription] = useState(currentImage.description);
   const [validationErrors, setValidationErrors] = useState([]);
 
@@ -22,6 +27,12 @@ const EditImage = ({ setShowModal }) => {
     if (!user) history.push("/login");
     const errors = [];
 
+    // if (!title.length) errors.push('Title is required');
+    // if (title.length > 75) errors.push("Title must be less than 75 characters");
+    // if (!imageUrl.length) errors.push("Image URL is required");
+    // if (!imageUrl.endsWith('.jps' || '.png' || '.jpeg' || '.gif'))
+    // 	errors.push('Image URL must end with .jps, .png, .jpeg, or .gif');
+    // if (imageUrl.length > 255) errors.push("Image URL is too long");
     if (description.length > 500) errors.push("Content is too long");
 
     if (errors.length) {
@@ -32,11 +43,17 @@ const EditImage = ({ setShowModal }) => {
     const data = {
       description,
       id: image?.id,
+      //   file,
     };
     await dispatch(editSingleImage(data));
     history.push(`/images/${image?.id}`);
     setShowModal(false);
   };
+
+  //   const handleChange = async (e) => {
+  //     const uploadFile = e.target.files[0];
+  //     setFile(uploadFile);
+  //   };
 
   if (!sessionUser) return <Redirect to="/signup" />;
 
@@ -53,6 +70,23 @@ const EditImage = ({ setShowModal }) => {
                 </li>
               ))}
             </ul>
+            {/* <input
+              className="upload-input"
+              type="file"
+              name="Image"
+            //   value={file}
+              accept=".jpg, .jpeg, .png, .gif, .jfif"
+              onChange={handleChange}
+            /> */}
+            {/* <input
+              className="upload-input"
+              type="text"
+              placeholder="Image URL must end with 'jpg,jpeg,gif,png'"
+              value={imageUrl}
+              required
+              pattern="^http[^\?]*.(jpg|jpeg|gif|png)(\?(.*))?$"
+              onChange={(e) => setImageUrl(e.target.value)}
+            /> */}
             <textarea
               className="upload-text-area"
               rows="7"
