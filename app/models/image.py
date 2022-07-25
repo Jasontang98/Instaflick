@@ -1,4 +1,5 @@
 from .db import db
+from .image_like import image_likes
 
 class Image(db.Model):
     __tablename__ = 'images'
@@ -18,6 +19,5 @@ class Image(db.Model):
             'created_at': self.created_at
         }
 
-    user = db.relationship('User', back_populates='image')
+    user = db.relationship('User', secondary=image_likes, back_populates='images')
     comment = db.relationship('Comment', back_populates='image', cascade='all, delete-orphan')
-    image_like = db.relationship('Image_Like', back_populates='image', cascade='all, delete-orphan')
