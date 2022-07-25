@@ -14,6 +14,7 @@ import SingleImage from "./components/SingleImage";
 import EditImage from "./components/EditImage";
 import Comments from "./components/Comments";
 import EditComment from "./components/EditComment/";
+import EditUser from "./components/EditUser";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -53,6 +54,10 @@ function App() {
 
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
+        </ProtectedRoute>
+
+        <ProtectedRoute path="/users/:userId/edit" exact={true}>
+          <EditUser />
         </ProtectedRoute>
 
         <ProtectedRoute path="/" exact={true}>
