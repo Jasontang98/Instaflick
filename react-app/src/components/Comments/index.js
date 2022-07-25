@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
-import EditImage from "./EditImage";
+import Comments from "./Comments";
 
-function EditImageModal() {
+function CommentsModal() {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Edit</button>
+      <button onClick={() => setShowModal(true)}>View All Comments</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditImage setShowModal={setShowModal} />
+          <Comments setShowModal={setShowModal} />
         </Modal>
       )}
     </>
   );
 }
 
-export default EditImageModal;
+export default CommentsModal;
