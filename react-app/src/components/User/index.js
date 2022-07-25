@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-// import getImagesByUser from "./store/images"
+import {
+  getAllImages,
+  getImagesByUser,
+} from "../../../../react-app/src/store/images.js";
 import "./User.css";
 
 function User() {
@@ -9,6 +12,8 @@ function User() {
   // console.log(userId)
   const dispatch = useDispatch();
   const { userId } = useParams();
+
+  const android = useSelector((state) => state.session.user);
 
   // console.log(userId.description, "User Id++++++++++++");
 
@@ -28,8 +33,12 @@ function User() {
   }, [userId]);
 
   // useEffect(() => {
-  //   dispatch(getImagesByUser())
-  // }, [dispatch])
+  //   dispatch(getAllImages());
+  // }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getImagesByUser());
+  }, [dispatch]);
 
   if (!user) {
     return null;
@@ -51,6 +60,8 @@ function User() {
       {images.map((image) => (
         <div className="image-container" key={image.id}>
           <NavLink exact to={`/images/${image.id}`}>
+            {" "}
+            {userId === image.user_id}
             <img alt="uploaded" className="image-frame" src={image.image_url} />
           </NavLink>
         </div>
