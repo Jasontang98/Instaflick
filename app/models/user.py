@@ -1,6 +1,8 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .image_like import image_likes
+from .comment_like import comment_likes
 
 
 class User(db.Model, UserMixin):
@@ -12,6 +14,12 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     prof_pic_url = db.Column(db.String(255), default='https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg')
     description = db.Column(db.String(500))
+
+    # RELATIONSHIPS
+    image = db.relationship('Image', back_populates='user', cascade='all, delete-orphan')
+    comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
+    user_images_likes = db.relationship('Image', secondary=image_likes, back_populates='image_likes')
+    user_comments_likes = db.relationship('Comment', secondary=comment_likes, back_populates='comment_likes')
 
     @property
     def password(self):
@@ -33,8 +41,5 @@ class User(db.Model, UserMixin):
             'description': self.description
         }
 
-
-    image = db.relationship('Image', back_populates='user', cascade='all, delete-orphan')
-    comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
-    image_like = db.relationship('Image_Like', back_populates='user')
-    comment_like = db.relationship('Comment_Like', back_populates='user')
+    # def __repr__(self):
+    #     return '<User: {}>'.format(self.id)
