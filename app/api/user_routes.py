@@ -6,23 +6,23 @@ user_routes = Blueprint('users', __name__)
 
 
 @user_routes.route('/')
-# @login_required
+@login_required
 def users():
     users = User.query.all()
     return {'users': [user.to_dict() for user in users]}
 
 
 @user_routes.route('/<int:id>')
-# @login_required
+@lgin_required
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
 #edit user profile
 @user_routes.route('/<int:id>/edit', methods=['PUT'])
-# @login_required
+@login_required
 def edit_user(id):
-    data = request.json
+    # data = request.json
     user = User.query.get(id)
     user.username = request.json['username']
     user.prof_pic_url = request.json['prof_pic_url']
@@ -32,7 +32,7 @@ def edit_user(id):
 
 #delete specific user
 @user_routes.route('/<int:id>', methods=['DELETE'])
-# @login_required
+@login_required
 def delete_user(id):
     user = User.query.get(id)
     db.session.delete(user)

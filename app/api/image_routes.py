@@ -59,6 +59,7 @@ def submit_single_image():
         file = Image(
             user_id=current_user.id,
             # image_url=request.form.get('image_url'),
+            username=request.form.get('username'),
             description=request.form.get('description'),
             image_url=file_url
         )
@@ -89,6 +90,14 @@ def get_all_comments(id):
     data = [comment.to_dict() for comment in comments]
     return {'comments': data}
 
+# Get A Single Comment
+@image_routes.route('/<int:id>/comments/<int:comment_id>')
+@login_required
+def get_single_comment(id, comment_id):
+    comment = Comment.query.get(comment_id)
+    return comment.to_dict()
+
+
 
 # Post a Single Comment
 @image_routes.route('/<int:id>', methods=['POST'])
@@ -100,6 +109,7 @@ def submit_single_comment(id):
         comment = Comment(
             user_id=form.user_id.data,
             image_id=form.image_id.data,
+            username=form.username.data,
             comment=form.comment.data
         )
         db.session.add(comment)
@@ -114,15 +124,15 @@ def edit_comment(id, comment_id):
     # image = Image.query.get(id)
     comment = Comment.query.get(comment_id)
     form = comment_form.EditCommentForm()
-    print("\n\n\n\n", form.comment.data)
+    print("\n\n\n\n", form.comment)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         comment.comment = form.comment.data
-        print("this is comment \n\n\n", comment)
+        # print("this is comment \n\n\n", comment)
         db.session.add(comment)
         db.session.commit()
         return comment.to_dict()
-    # data = request.jso
+    # data = request.json
     # comment = Comment.query.get(comment_id)
     # comment.comment = request.json['comment']
     # db.session.add(comment)
