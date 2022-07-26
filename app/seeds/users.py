@@ -15,7 +15,7 @@ def seed_users():
     db.session.add(marnie)
     db.session.add(bobbie)
     image4 = Image(
-        user_id=1, image_url='https://i.ytimg.com/vi/LTgE_5MhUTQ/maxresdefault.jpg', description='TFT2', image_likes=[marnie, bobbie])
+        user_id=1, username='bobbie', image_url='https://i.ytimg.com/vi/LTgE_5MhUTQ/maxresdefault.jpg', description='TFT2', image_likes=[marnie, bobbie])
 
     db.session.add(image4)
 
