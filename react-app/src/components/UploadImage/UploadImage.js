@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { uploadImage } from "../../store/images";
-// import './upload.css';
+import "./upload.css";
 
 const UploadImage = ({ setShowModal }) => {
   const dispatch = useDispatch();
@@ -34,8 +34,7 @@ const UploadImage = ({ setShowModal }) => {
 
     dispatch(uploadImage(data));
     history.push("/feed");
-      setShowModal(false);
-    // console.log(setShowModal, "Set Show Modal +++++++");
+    setShowModal(false);
   };
 
   const handleChange = async (e) => {
