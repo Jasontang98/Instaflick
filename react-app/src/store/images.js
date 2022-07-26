@@ -55,7 +55,6 @@ export const getSingleImage = (id) => async (dispatch) => {
 
 // GET USERS' IMAGES
 export const getImagesByUser = (userId) => async (dispatch) => {
-  console.log(userId, "$$$$$$$$$ USER ID $$$$$$$$$");
   const response = await fetch(`/api/images/${userId}`);
 
   if (response.ok) {
@@ -66,11 +65,12 @@ export const getImagesByUser = (userId) => async (dispatch) => {
 
 // POST
 export const uploadImage = (image) => async (dispatch) => {
-  const { user_id, description, file } = image;
+  const { user_id, description, file, username } = image;
 
   const form = new FormData();
   form.append("user_id", user_id);
   form.append("description", description);
+  form.append("username", username);
   form.append("file", file);
   console.log(form);
   const response = await fetch("/api/images/", {

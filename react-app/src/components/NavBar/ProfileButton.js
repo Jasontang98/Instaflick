@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 // import "./Navigation.css";
-import EditUser from "../EditUser";
+
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -41,7 +43,11 @@ function ProfileButton({ user }) {
             <ul>{user.username}</ul>
             <ul>{user.email}</ul>
             <ul>
-              <EditUser />
+              <NavLink to={`/users/${sessionUser.id}`}>
+                <button type="button">
+                  Profile
+                </button>
+              </NavLink>
             </ul>
             <ul>
               <button onClick={logout}>Log Out</button>

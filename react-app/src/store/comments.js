@@ -41,12 +41,14 @@ export const getCommentsByImage = (image_id) => async (dispatch) => {
 };
 
 export const addAComment = (data) => async (dispatch) => {
-  const { user_id, image_id, comment } = data;
+  const { user_id, image_id, comment, username } = data;
+  console.log(data, "THIS IS THE THUNK DATA");
 
   const form = new FormData();
   form.append("user_id", user_id);
   form.append("image_id", image_id);
   form.append("comment", comment);
+  form.append("username", username);
 
   const response = await fetch(`/api/images/${image_id}`, {
     method: "POST",
@@ -71,24 +73,24 @@ export const deleteAComment = (image_id, comment_id) => async (dispatch) => {
   }
 };
 
-export const editAComment =  (comment) => async (dispatch) => {
-console.log(comment)
-    const formData = new FormData();
-    formData.append("comment", comment.content);
+export const editAComment = (comment) => async (dispatch) => {
+  console.log(comment);
+  const formData = new FormData();
+  formData.append("comment", comment.content);
 
-    const response = await fetch(
-      `/api/images/${comment.comments.image_id}/comments/${comment.comments.id}`,
-      {
-        method: "PUT",
-        body: formData,
-      }
-    );
-    if (response.ok) {
-      const data = await response.json();
-      dispatch(editComment(data));
-      return data;
+  const response = await fetch(
+    `/api/images/${comment.comments.image_id}/comments/${comment.comments.id}`,
+    {
+      method: "PUT",
+      body: formData,
     }
-  };
+  );
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(editComment(data));
+    return data;
+  }
+};
 
 const initialState = {};
 
@@ -96,14 +98,11 @@ const commentsReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case GET_COMMENTS:
-      newState = { ...state };
+      newState = {};
       action.comments.comments.forEach((comment) => {
         newState[comment.id] = comment;
       });
       return newState;
-    case CLEAN_STATE:
-      const clearState = {};
-      return clearState;
     case ADD_COMMENT:
       return { ...state, [action.comment.id]: action.comment };
     case EDIT_COMMENT:

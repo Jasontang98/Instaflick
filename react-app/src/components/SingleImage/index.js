@@ -16,8 +16,6 @@ const SingleImage = () => {
 
   const sessionUser = useSelector((state) => state.session.user);
   const account = useSelector((state) => state.session.user);
-  const comments = Object.values(useSelector((state) => state.comments));
-  const [comment, setComment] = useState("");
   const [isLoaded, setLoaded] = useState(false);
   const [validationErrors, setValidationErrors] = useState([]);
 
@@ -38,10 +36,6 @@ const SingleImage = () => {
   };
 
   if (!oneImage) return null;
-
-  const notLoggedIn = () => {
-    if (!account) history.push("/login");
-  };
 
   if (!sessionUser) return <Redirect to="/signup" />;
 

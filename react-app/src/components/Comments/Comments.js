@@ -17,16 +17,17 @@ const Comments = ({ setShowModal }) => {
 
   const { id } = useParams();
 
-  const sessionUser = useSelector((state) => state.session.user);
+  const oneImage = useSelector((state) => state.images[id]);
+
   const account = useSelector((state) => state.session.user);
   const comments = Object.values(useSelector((state) => state.comments));
 
   const [comment, setComment] = useState("");
+
   const [isLoaded, setLoaded] = useState(false);
   const [validationErrors, setValidationErrors] = useState([]);
 
   useEffect(() => {
-    // if (!account) history.push('/');
     dispatch(getCommentsByImage(id)).then(() => setLoaded(true));
 
     return () => {
@@ -53,10 +54,10 @@ const Comments = ({ setShowModal }) => {
       comment,
       user_id: account?.id,
       image_id: id,
+      username: account.username,
     };
 
     await dispatch(addAComment(data));
-    // .then(dispatch(getSingleImage(id)))
     setComment("");
   };
 
@@ -72,18 +73,22 @@ const Comments = ({ setShowModal }) => {
   //   setComment("");
   // };
 
-  if (!sessionUser) return <Redirect to="/signup" />;
+  if (!account) return <Redirect to="/signup" />;
 
   return (
     isLoaded && (
       <>
         <h1 className="comments-single-image">Comments</h1>
+        <div>
+          <img src={oneImage.image_url} alt="uploaded"></img>
+        </div>
         <div className="comments">
           {comments.map((comment) => {
             return (
               <div className="new-comment-div" key={comment.id}>
                 <p className="ptagz-comments">{comment?.comment}</p>
-                <p className="ptagz-usename">{/* {comment?.user_id} */}</p>
+                <p className="ptagz-usename">{comment?.username}</p>
+
                 <div className="dlt-button-container">
                   {comment?.user_id === account.id ? (
                     <>
@@ -132,21 +137,6 @@ const Comments = ({ setShowModal }) => {
             Submit
           </button>
         </form>
-        {/* <form onSubmit={editSubmit}>
-          <textarea
-            className="something"
-            value={comment}
-            required
-            onChange={(e) => setComment(e.tasrget.value)}
-          />
-          <button
-            className="single-image-submit-btn"
-            onClick={notLoggedIn}
-            type="submit"
-          >
-            Submit
-          </button>
-        </form> */}
       </>
     )
   );
