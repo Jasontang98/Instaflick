@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 import "./feed.css";
-// import Comments from "../Comments/";
 
 const Images = () => {
   const dispatch = useDispatch();
@@ -24,7 +23,7 @@ const Images = () => {
           {images.map((image) => (
             <div className="image-container" key={image.id}>
               <NavLink exact to={`/images/${image.id}`}>
-              {/* <Comments /> */}
+                {/* <Comments /> */}
                 <img
                   alt="uploaded"
                   className="image-frame"

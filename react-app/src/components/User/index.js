@@ -3,6 +3,7 @@ import { useParams, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllImages } from "../../../../react-app/src/store/images.js";
 import "./User.css";
+import EditUser from "../EditUser";
 
 function User() {
   const [user, setUser] = useState({});
@@ -11,6 +12,7 @@ function User() {
   const { userId } = useParams();
 
   const imagesObject = useSelector((state) => state.images);
+  const account = useSelector((state) => state.session.user);
 
   const images = Object.values(imagesObject);
 
@@ -41,7 +43,14 @@ function User() {
         <strong>User Id</strong> {userId}
       </ul>
       <ul>
-        <strong>Username</strong> {user.username}
+        <strong>{user.username}</strong>
+        {account.id === parseInt(userId) ? (
+          <div>
+            <EditUser />
+          </div>
+        ) : (
+          <></>
+        )}
       </ul>
       <ul>
         <strong>Email</strong> {user.email}
