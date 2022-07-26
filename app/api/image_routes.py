@@ -17,7 +17,7 @@ image_routes = Blueprint('images', __name__)
 # Edit Single Image Description
 
 @image_routes.route('/edit/<int:id>', methods=['PUT'])
-@login_required
+# @login_required
 def edit_image(id):
     data = request.json
     image = Image.query.get(id)
@@ -28,7 +28,7 @@ def edit_image(id):
 
 # Get All Images on the Feed Page
 @image_routes.route('/feed')
-@login_required
+# @login_required
 def all_images():
     images = Image.query.all()
     data = [image.to_dict() for image in images]
@@ -36,7 +36,7 @@ def all_images():
 
 # Get Single Image
 @image_routes.route('/<int:id>')
-@login_required
+# @login_required
 def get_single_image(id):
     image = Image.query.get(id)
     return image.to_dict()
@@ -44,7 +44,7 @@ def get_single_image(id):
 
 # Post a Single Image
 @image_routes.route('/', methods=['POST'])
-@login_required
+# @login_required
 def submit_single_image():
     if "file" not in request.files:
         return "No user_file key in request.files"
@@ -70,7 +70,7 @@ def submit_single_image():
 
 # Delete a Single Image
 @image_routes.route('/<int:id>', methods=['DELETE'])
-@login_required
+# @login_required
 def delete_image(id):
     image = Image.query.get(id)
     db.session.delete(image)
@@ -83,7 +83,7 @@ def delete_image(id):
 
 # Get All Comments
 @image_routes.route('/<int:id>/comments')
-@login_required
+# @login_required
 def get_all_comments(id):
     comments = Comment.query.filter_by(image_id=id).all()
     data = [comment.to_dict() for comment in comments]
@@ -92,7 +92,7 @@ def get_all_comments(id):
 
 # Post a Single Comment
 @image_routes.route('/<int:id>', methods=['POST'])
-@login_required
+# @login_required
 def submit_single_comment(id):
     form = comment_form.CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -109,7 +109,7 @@ def submit_single_comment(id):
 
 # # Edit a Single Comment
 @image_routes.route('/<int:id>/comments/<int:comment_id>', methods=['PUT'])
-@login_required
+# @login_required
 def edit_comment(id, comment_id):
     # image = Image.query.get(id)
     comment = Comment.query.get(comment_id)
@@ -133,7 +133,7 @@ def edit_comment(id, comment_id):
 
 # #Delete a Single Comment
 @image_routes.route('/<int:id>/comments/<int:comment_id>', methods=['DELETE'])
-@login_required
+# @login_required
 def delete_comment(id, comment_id):
     comment = Comment.query.get(comment_id)
     db.session.delete(comment)
