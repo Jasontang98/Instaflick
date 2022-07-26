@@ -13,6 +13,7 @@ const SingleImage = () => {
   const { id } = useParams();
 
   const oneImage = useSelector((state) => state.images[id]);
+  console.log(oneImage, 'not undefined');
 
   const sessionUser = useSelector((state) => state.session.user);
   const account = useSelector((state) => state.session.user);
@@ -71,6 +72,9 @@ const SingleImage = () => {
                 )}
               </div>
               <h3 className="description">{oneImage.description}</h3>
+            </div>
+            <div>
+              {oneImage.likes}
             </div>
             <Comments />
           </div>
