@@ -3,11 +3,11 @@ from app.models import db, Comment
 # Adds a demo user, you can add other users here if you want
 def seed_comments():
     comment1 = Comment(
-        user_id=2, image_id=3, comment="Bro, that's last season")
+        user_id=2, username='marnie',image_id=3, comment="Bro, that's last season")
     comment2 = Comment(
-        user_id=3, image_id=3, comment='3-star Lulu?! What!!!')
+        user_id=3, username='bobbie',image_id=3, comment='3-star Lulu?! What!!!')
     comment3 = Comment(
-        user_id=1, image_id=2, comment='Too OP! Syfen!')
+        user_id=1, username='Demo',image_id=2, comment='Too OP! Syfen!')
 
     db.session.add(comment1)
     db.session.add(comment2)

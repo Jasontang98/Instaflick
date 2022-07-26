@@ -4,11 +4,11 @@ from app.models import db, Image
 # Adds a demo user, you can add other users here if you want
 def seed_images():
     image1 = Image(
-        user_id=1, image_url='https://i.ytimg.com/vi/jd0cYBY4tbU/sddefault.jpg', description='TFT1')
+        user_id=1, username="Demo", image_url='https://i.ytimg.com/vi/jd0cYBY4tbU/sddefault.jpg', description='TFT1')
     image2 = Image(
-        user_id=1, image_url='https://i.ytimg.com/vi/HU6v4I0yor8/hqdefault.jpg', description='')
+        user_id=1, username="Demo", image_url='https://i.ytimg.com/vi/HU6v4I0yor8/hqdefault.jpg', description='')
     image3 = Image(
-        user_id=3, image_url='https://i.ytimg.com/vi/LTgE_5MhUTQ/maxresdefault.jpg', description='TFT2')
+        user_id=3, username="bobbie", image_url='https://i.ytimg.com/vi/LTgE_5MhUTQ/maxresdefault.jpg', description='TFT2')
 
     db.session.add(image1)
     db.session.add(image2)
