@@ -1,4 +1,4 @@
-from app.models import db, User
+from app.models import db, User, Image
 
 
 # Adds a demo user, you can add other users here if you want
@@ -10,9 +10,14 @@ def seed_users():
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password', prof_pic_url='https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg')
 
+
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    image4 = Image(
+        user_id=1, image_url='https://i.ytimg.com/vi/LTgE_5MhUTQ/maxresdefault.jpg', description='TFT2', image_likes=[marnie, bobbie])
+
+    db.session.add(image4)
 
     db.session.commit()
 

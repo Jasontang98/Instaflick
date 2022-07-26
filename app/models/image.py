@@ -1,4 +1,5 @@
 from .db import db
+from .image_like import image_likes
 
 class Image(db.Model):
     __tablename__ = 'images'
@@ -9,6 +10,12 @@ class Image(db.Model):
     description = db.Column(db.String(500))
     created_at = db.Column(db.DateTime, nullable=False, default=db.func.now())
 
+    # RELATIONSHIP
+    user = db.relationship('User', back_populates='image')
+    comment = db.relationship('Comment', back_populates='image', cascade='all, delete-orphan')
+    image_likes = db.relationship('User', secondary=image_likes, back_populates='user_images_likes')
+
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -17,7 +24,3 @@ class Image(db.Model):
             'description': self.description,
             'created_at': self.created_at
         }
-
-    user = db.relationship('User', back_populates='image')
-    comment = db.relationship('Comment', back_populates='image', cascade='all, delete-orphan')
-    image_like = db.relationship('Image_Like', back_populates='image', cascade='all, delete-orphan')
