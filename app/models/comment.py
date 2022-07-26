@@ -22,6 +22,7 @@ class Comment(db.Model):
             'image_id': self.image_id,
             'username': self.username,
             'comment': self.comment,
+            'likes': len(self.comment_likes),
             'created_at': self.created_at
         }
 
