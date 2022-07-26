@@ -9,6 +9,7 @@ class Image(db.Model):
     image_url = db.Column(db.String(255), nullable=False)
     username = db.Column(db.String(40), nullable=False)
     description = db.Column(db.String(500))
+    # image_likes = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, nullable=False, default=db.func.now())
 
     # RELATIONSHIP
@@ -24,5 +25,6 @@ class Image(db.Model):
             'image_url': self.image_url,
             'username': self.username,
             'description': self.description,
+            'likes': len(self.image_likes),
             'created_at': self.created_at
         }

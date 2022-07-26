@@ -39,6 +39,7 @@ def all_images():
 @login_required
 def get_single_image(id):
     image = Image.query.get(id)
+    print(image.to_dict(), '***************************')
     return image.to_dict()
 
 
