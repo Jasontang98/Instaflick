@@ -55,6 +55,7 @@ const EditUser = () => {
                                 </li>
                             ))}
                         </ul>
+                        <img src={user.prof_pic_url} alt="profile pic" />
                         <input
                         className="username-field"
                         value={username}

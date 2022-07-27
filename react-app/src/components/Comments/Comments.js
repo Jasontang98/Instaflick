@@ -18,6 +18,16 @@ const Comments = ({ setShowModal }) => {
   const { id } = useParams();
 
   const oneImage = useSelector((state) => state.images[id]);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("/api/users/");
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, []);
 
   const account = useSelector((state) => state.session.user);
   const comments = Object.values(useSelector((state) => state.comments));
@@ -88,6 +98,25 @@ const Comments = ({ setShowModal }) => {
               <div className="new-comment-div" key={comment.id}>
                 <p className="ptagz-comments">{comment?.comment}</p>
                 <p className="ptagz-usename">{comment?.username}</p>
+                {users.map((user) => {
+                  return (
+                    <>
+                      <div className="prof-pic-contain" key={user.prof_pic_url}>
+                        {user?.id === comment?.id ? (
+                          <>
+                            <img
+                              src={user.prof_pic_url}
+                              alt="prof pic"
+                              key={user.id}
+                            ></img>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </div>
+                    </>
+                  );
+                })}
 
                 <div className="dlt-button-container">
                   {comment?.user_id === account.id ? (
