@@ -12,6 +12,7 @@ function UsersList() {
     }
     fetchData();
   }, []);
+  // console.log(users, "######### SET USERS")
 
   const userComponents = users.map((user) => {
     return (
