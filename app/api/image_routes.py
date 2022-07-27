@@ -4,7 +4,7 @@ import botocore
 from flask import Blueprint, request, jsonify, render_template
 from flask_login import login_required, current_user
 from datetime import datetime
-from app.models import User, Image, Comment, db, image_likes, comment_likes
+from app.models import User, Image, Comment, db
 from app.config import Config
 from app.aws_s3 import *
 from app.forms import image_form, comment_form
@@ -39,7 +39,6 @@ def all_images():
 @login_required
 def get_single_image(id):
     image = Image.query.get(id)
-    print(image.to_dict(), '***************************')
     return image.to_dict()
 
 
@@ -111,7 +110,9 @@ def submit_single_comment(id):
             user_id=form.user_id.data,
             image_id=form.image_id.data,
             username=form.username.data,
+            # profpic=form.profpic.data,
             comment=form.comment.data
+
         )
         db.session.add(comment)
         db.session.commit()

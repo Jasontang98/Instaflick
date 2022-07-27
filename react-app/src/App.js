@@ -78,6 +78,10 @@ function App() {
           <SingleImage />
         </Route>
 
+        <Route path="/accounts/edit" exact={true}>
+          <EditUser />
+        </Route>
+
         <Route>
           Sorry, this page isn't available.
           <div />

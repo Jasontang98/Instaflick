@@ -34,7 +34,7 @@ const removeImage = (id) => ({
 // GET ALL IMAGES
 export const getAllImages = () => async (dispatch) => {
   const response = await fetch("/api/images/feed");
-  console.log(response);
+  // console.log(response);
 
   if (response.ok) {
     const data = await response.json();
@@ -72,7 +72,6 @@ export const uploadImage = (image) => async (dispatch) => {
   form.append("description", description);
   form.append("username", username);
   form.append("file", file);
-  console.log(form);
   const response = await fetch("/api/images/", {
     method: "POST",
     body: form,
