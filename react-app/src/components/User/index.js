@@ -3,7 +3,7 @@ import { useParams, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllImages } from "../../../../react-app/src/store/images.js";
 import "./User.css";
-import EditUser from "../EditUser";
+// import EditUser from "../EditUser";
 
 function User() {
   const [user, setUser] = useState({});
@@ -46,7 +46,7 @@ function User() {
         <strong>{user.username}</strong>
         {account.id === parseInt(userId) ? (
           <div>
-            <EditUser />
+            <NavLink to="/accounts/edit">Edit profile</NavLink>
           </div>
         ) : (
           <></>
