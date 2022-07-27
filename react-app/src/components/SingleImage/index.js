@@ -13,7 +13,7 @@ const SingleImage = () => {
   const { id } = useParams();
 
   const oneImage = useSelector((state) => state.images[id]);
-  console.log(oneImage, 'not undefined');
+  // console.log(oneImage, 'not undefined');
 
   const sessionUser = useSelector((state) => state.session.user);
   const account = useSelector((state) => state.session.user);
