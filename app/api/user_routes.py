@@ -1,6 +1,12 @@
+import boto3
+import botocore
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
+from sqlalchemy import desc
 from app.models import User, db
+from app.config import Config
+from app.aws_s3 import *
+
 
 user_routes = Blueprint('users', __name__)
 
@@ -22,13 +28,20 @@ def user(id):
 @user_routes.route('/<int:id>/edit', methods=['PUT'])
 @login_required
 def edit_user(id):
-    # data = request.json
+
     user = User.query.get(id)
-    user.username = request.json['username']
-    user.prof_pic_url = request.json['prof_pic_url']
-    user.description = request.json['description']
+    user.description = request.form.get('description')
+    user.username = request.form.get('username')
+    if len(request.files) != 0:
+        file = request.files["file"]
+        file_url = upload_file_to_s3(file, Config.S3_BUCKET)
+        user.prof_pic_url = file_url
+
+
+    db.session.add(user)
     db.session.commit()
     return user.to_dict()
+
 
 #delete specific user
 @user_routes.route('/<int:id>', methods=['DELETE'])
