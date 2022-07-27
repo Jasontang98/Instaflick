@@ -7,7 +7,6 @@ const EditImage = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const image = useParams();
 
-  const user = useSelector((state) => state.session.user);
   const images = useSelector((state) => state.images);
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -19,7 +18,7 @@ const EditImage = ({ setShowModal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!user) history.push("/login");
+    if (!sessionUser) history.push("/login");
     const errors = [];
 
     if (description.length > 500) errors.push("Content is too long");
