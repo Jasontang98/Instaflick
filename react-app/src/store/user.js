@@ -23,6 +23,27 @@ const deleteUser = (user) => ({
   user,
 });
 
+//EDIT SINGLE USER
+export const editSingleUser = (user) => async (dispatch) => {
+  const { username, description, file } = user;
+
+  const form = new FormData();
+  form.append("username", username);
+  form.append("description", description);
+  form.append("file", file);
+
+  const response = await fetch(`/api/users/${user.id}/edit`, {
+    method: "PUT",
+    body: form,
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(editUser(data));
+    return data;
+  }
+};
+
 // GET ALL USERS
 export const getAllUsers = () => async (dispatch) => {
   const response = await fetch("/api/users");
@@ -41,21 +62,6 @@ export const getSingleUser = (id) => async (dispatch) => {
   }
 };
 
-//EDIT SINGLE USER
-export const editSingleUser = (user) => async (dispatch) => {
-  const response = await fetch(`/api/users/${user.id}`, {
-    method: "PUT",
-    body: JSON.stringify(user),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(editUser(data));
-    return data;
-  }
-};
 
 //DELETE SINGLE USER
 export const deleteSingleUser = (id) => async (dispatch) => {
@@ -67,3 +73,27 @@ export const deleteSingleUser = (id) => async (dispatch) => {
     dispatch(deleteUser(data.id));
   }
 };
+
+const initialState = {};
+
+// REDUCERS
+const userReducer = (state = initialState, action) => {
+  // let newState;
+  switch (action.type) {
+    case GET_USERS:
+        console.log(action, "THIS IS THE ACTION")
+      return;
+    // case GET_USER:
+    //   return { ...state, [action.user.id]: action.user };
+    // case PUT_USER:
+      // console.log(action, "THIS IS THE USER ACTION")
+      // return { ...state, [action.user.id]: action.user };
+    // case DELETE_USER:
+    //   return delete { ...state, [action.id]: action.id };
+    default:
+      return state;
+  }
+};
+
+
+export default userReducer;
