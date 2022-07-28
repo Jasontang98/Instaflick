@@ -1,0 +1,653 @@
+.mother-mount-container {
+	display: block;
+	color: rgb(38 38 38);
+	font-family: var(--font-family-system);
+	font-size: var(--system-14-font-size);
+	line-height: var(--system-14-line-height);
+	direction: ltr;
+	background-color: rgb(var(--ig-secondary-background));
+}
+
+.mother-mount-container-child {
+	box-sizing: border-box;
+	position: relative;
+	z-index: 0;
+	display: block;
+	color: rgb(38 38 38);
+	font-family: var(--font-family-system);
+	font-size: var(--system-14-font-size);
+	line-height: var(--system-14-line-height);
+	--base-unit: 4px;
+	--blue-4: #47afff;
+	--blue-5: #0095f6;
+	--blue-6: #0074cc;
+	--blue-7: #0057a3;
+	--blue-9: #002952;
+	--challenge-link: 54, 54, 54;
+	--clr-separator: #efefef;
+	--clr_red_dark_30: #af2634;
+	--cluster-card-border-radius: 8px;
+	--creation-composer-height: 81px;
+	--creation-header-composer-height: 126px;
+	--creation-header-height: 43px;
+	--creation-min-padding-x: 32px;
+	--creation-modal-max-height: 898px;
+	--creation-modal-min-height: 391px;
+	--creation-padding-x: 64px;
+	--creation-padding-y: 112px;
+	--creation-settings-width: 340px;
+	--cyan-5: #27c4f5;
+	--desktop-cluster-card-height: 89px;
+	--desktop-cluster-card-width: 140px;
+	--desktop-collapsed-nav-height: 52px;
+	--desktop-grid-item-margin: 28px;
+	--desktop-in-feed-story-item-height: 208px;
+	--desktop-in-feed-story-item-width: 116px;
+	--desktop-large-modal-max-height: 781px;
+	--desktop-large-modal-max-width: 1491px;
+	--desktop-large-modal-min-height: 664px;
+	--desktop-large-modal-min-width: 908px;
+	--desktop-nav-anim-duration: 0.2s;
+	--desktop-nav-search-box-large-width: 268px;
+	--desktop-nav-search-box-width: 215px;
+	--desktop-regular-nav-height: 77px;
+	--direct-attachment-image-grid-border-size: 1px;
+	--direct-attachment-image-grid-item-size: 78px;
+	--direct-attachment-story-height: 150px;
+	--direct-attachment-story-large-height: 256px;
+	--direct-attachment-story-large-width: 164px;
+	--direct-attachment-story-width: 84px;
+	--direct-message-margin: 8px;
+	--direct-message-max-width: 236px;
+	--docpen-lightgrey: 243, 243, 243;
+	--fb-connect-blue: #4f67b0;
+	--fb-signup-page-profile-pic-size: 88px;
+	--feed-sidebar-padding: 32px;
+	--feed-sidebar-width: 319px;
+	--font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Helvetica, Arial, sans-serif;
+	--font-weight-system-bold: 700;
+	--font-weight-system-extra-bold: 800;
+	--font-weight-system-extra-light: 200;
+	--font-weight-system-light: 300;
+	--font-weight-system-medium: 500;
+	--font-weight-system-regular: 400;
+	--font-weight-system-semibold: 600;
+	--gradient-lavender: #d300c5;
+	--gradient-orange: #ff7a00;
+	--gradient-pink: #ff0169;
+	--gradient-purple: #7638fa;
+	--gradient-yellow: #ffd600;
+	--green-4: #78de45;
+	--green-5: #58c322;
+	--green-6: #37a600;
+	--grey-1: #efefef;
+	--grey-2: #dbdbdb;
+	--grey-4: #a8a8a8;
+	--grey-5: #8e8e8e;
+	--grey-6: #737373;
+	--grey-8: #363636;
+	--grey-9: #262626;
+	--grid-column-width: 5.555555555555555%;
+	--hscc-collapse-transition-duration: 0.3s;
+	--ig-badge: 255, 48, 65;
+	--ig-banner-background: 255, 255, 255;
+	--ig-close-friends-refreshed: 28, 209, 79;
+	--ig-elevated-background: 255, 255, 255;
+	--ig-elevated-separator: 219, 219, 219;
+	--ig-error-or-destructive: 237, 73, 86;
+	--ig-facebook-blue: 53, 121, 234;
+	--ig-focus-stroke: 168, 168, 168;
+	--ig-full-screen-background: 54, 54, 54;
+	--ig-highlight-background: 239, 239, 239;
+	--ig-link: 0, 55, 107;
+	--ig-live-badge: 255, 1, 105;
+	--ig-primary-background: 255, 255, 255;
+	--ig-primary-button: 0, 149, 246;
+	--ig-primary-text: 38, 38, 38;
+	--ig-secondary-background: 250, 250, 250;
+	--ig-secondary-button: 38, 38, 38;
+	--ig-secondary-text: 142, 142, 142;
+	--ig-separator: 219, 219, 219;
+	--ig-stroke: 219, 219, 219;
+	--ig-subscribers-only: 118, 56, 250;
+	--ig-success: 88, 195, 34;
+	--ig-temporary-highlight: 245, 251, 255;
+	--ig-tertiary-text: 199, 199, 199;
+	--ig-text-on-color: 255, 255, 255;
+	--ig-text-on-media: 255, 255, 255;
+	--igui-border-radius: 3px;
+	--in-feed-story-item-height: 240px;
+	--in-feed-story-item-width: 135px;
+	--input-border-radius: 6px;
+	--like-animation-duration: 1000ms;
+	--live-video-border-radius: 4px;
+	--live-video-right-col-width: 336px;
+	--media-info: 335px;
+	--mobile-cluster-card-height: 74px;
+	--mobile-cluster-card-width: 108px;
+	--mobile-grid-item-margin: 2px;
+	--mobile-nav-height: 45px;
+	--modal-backdrop-dark: rgba(0, 0, 0, 0.85);
+	--modal-backdrop-default: rgba(0, 0, 0, 0.65);
+	--modal-border-radius: 12px;
+	--modal-padding: 16px;
+	--modal-z-index: 100;
+	--orange-5: #fd8d32;
+	--photo: 600px;
+	--pink-5: #d10869;
+	--post-separator: 239, 239, 239;
+	--post-step-indicator: 168, 168, 168;
+	--purple-5: #a307ba;
+	--red-4: #ff6874;
+	--red-5: #ed4956;
+	--red-6: #c62330;
+	--red-7: #a70311;
+	--refinement-section-height: 50px;
+	--scrollable-content-header-height-med: 49px;
+	--scrollable-content-header-height: 44px;
+	--search-modal-height-expanded: 450px;
+	--search-modal-height: 362px;
+	--search-modal-top-offset: 12px;
+	--search-result-height: 50px;
+	--search-result-list-width: 375px;
+	--story-cube-shading-duration: 200ms;
+	--story-desktop-margin-bottom: 26px;
+	--story-desktop-margin-top: 82px;
+	--story-gallery-preview-scale-correction: 2.5;
+	--story-progressbar-update-tick: 0.1s;
+	--story-swap-animation-duration: 350ms;
+	--system-10-font-size: 10px;
+	--system-10-line-height: 12px;
+	--system-11-font-size: 11px;
+	--system-11-line-height: 13px;
+	--system-12-font-size: 12px;
+	--system-12-line-height: 16px;
+	--system-14-font-size: 14px;
+	--system-14-line-height: 18px;
+	--system-16-font-size: 16px;
+	--system-16-line-height: 24px;
+	--system-18-font-size: 18px;
+	--system-18-line-height: 24px;
+	--system-20-line-height: 25px;
+	--system-22-font-size: 22px;
+	--system-22-line-height: 26px;
+	--system-24-font-size: 24px;
+	--system-24-line-height: 27px;
+	--system-26-font-size: 26px;
+	--system-26-line-height: 28px;
+	--system-28-font-size: 28px;
+	--system-28-line-height: 32px;
+	--system-32-font-size: 32px;
+	--system-32-line-height: 40px;
+	--tos-box-shadow: 0, 0, 0;
+	--web-always-black: 0, 0, 0;
+	--web-always-white: 255, 255, 255;
+	--web-overlay-on-media: 38, 38, 38;
+	--web-secondary-action: 224, 241, 255;
+	--yellow-5: #fdcb5c;
+}
+
+.mother-mount-container-grandchild {
+	position: relative;
+	display: flex;
+	z-index: 0;
+	flex-direction: column;
+}
+
+.mother-mount-container-great-grandchild {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.possible-header-container {
+	position: relative;
+	min-height: calc(100vh - var(--header-height));
+	display: flex;
+	flex-direction: column;
+	top: var(--header-height);
+}
+
+.possible-header-container-child {
+	position: relative;
+	display: flex;
+	z-index: 0;
+	min-height: inherit;
+	margin-bottom: calc(-100vh + var(--header-height));
+	flex-direction: column;
+}
+
+.possible-header-container-grand-child {
+	display: block;
+	color: rgb(38 38 38);
+	font-family: var(--font-family-system);
+	font-size: var(--system-14-font-size);
+	line-height: var(--system-14-line-height);
+}
+
+.edit-profile-section {
+	/* min-height: 100vh; */
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+	align-items: stretch;
+	box-sizing: border-box;
+	flex-shrink: 0;
+	position: relative;
+	max-height: 88vh;
+	border-radius: 5px;
+}
+
+.edit-profile-section-child {
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+	align-items: stretch;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	position: relative;
+	max-height: 88vh;
+}
+
+.edit-main-container {
+	background-color: rgb(var(--ig-secondary-background));
+	align-items: stretch;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	flex-shrink: 0;
+	margin: 0;
+	order: 4;
+	padding: 0;
+	position: relative;
+	border: 0 solid black;
+	font: inherit;
+	font-size: 100%;
+	color: rgb(38 38 38);
+	height: 88vh;
+}
+
+.edit-main-container-card {
+	background-color: rgb(var(--ig-primary-background));
+	border: 1px solid rgb(var(--ig-elevated-separator));
+	border-radius: 3px;
+	display: flex;
+	margin: 60px auto 0;
+	max-width: 696px;
+	overflow: hidden;
+	width: 100%;
+	flex-direction: row;
+	flex-grow: 1;
+	justify-content: stretch;
+	font: inherit;
+	font-size: 100%;
+	padding: 0;
+	vertical-align: baseline;
+	align-items: stretch;
+	box-sizing: border-box;
+	flex-shrink: 0;
+	position: relative;
+	max-height: 320px;
+}
+
+.edit-main-container-card-child {
+	align-items: stretch;
+	border: 0;
+	box-sizing: border-box;
+	display: flex;
+	flex: 1 1 400px;
+	flex-direction: column;
+	font: inherit;
+	font-size: 100%;
+	margin: 0;
+	min-width: 50px;
+	padding: 0;
+	position: relative;
+	vertical-align: baseline;
+	height: 320px
+}
+
+.profilepic-username-change-container {
+	align-items: stretch;
+	border: 0;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 0;
+	font: inherit;
+	font-size: 100%;
+	justify-content: flex-start;
+	margin: 32px 0 0;
+	padding: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+.editpage-profilepic-container {
+	margin: 2px 32px 0 124px;
+	align-items: stretch;
+	border: 0;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	font: inherit;
+	font-size: 100%;
+	height: 38px;
+	padding: 0;
+	position: relative;
+	vertical-align: baseline;
+	width: 38px;
+}
+
+.profile-pic-on-editpage {
+	background-color: rgb(var(--ig-secondary-background));
+	border-radius: 50%;
+	box-sizing: border-box;
+	height: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	padding: 0;
+	vertical-align: baseline;
+	align-items: stretch;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+}
+
+.editprofile-page-username-and-button-container {
+	align-items: stretch;
+	border: 0;
+	box-sizing: border-box;
+	display: flex;
+	flex: 0 1 auto;
+	flex-direction: column;
+	font: inherit;
+	font-size: 100%;
+	margin: 0;
+	margin-right: 20px;
+	overflow-x: hidden;
+	padding: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+.editprofile-page-username {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 22px;
+	margin-bottom: 2px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+	color: rgb(38 38 38);
+}
+
+.change-profile-button {
+	text-align: left;
+	border: 0;
+	color: rgb(0 149 246);
+	display: inline-block;
+	padding: 0;
+	position: relative;
+	background: none;
+	box-sizing: border-box;
+	cursor: pointer;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	text-overflow: ellipsis;
+	text-transform: inherit;
+	width: auto;
+	margin: 0;
+}
+
+.edit-profile-main-form {
+	align-items: stretch;
+	border: 0;
+	display: flex;
+	flex-direction: column;
+	font: inherit;
+	font-size: 100%;
+	margin: 0;
+	margin-bottom: 16px;
+	margin-top: 16px;
+	padding: 0;
+	vertical-align: baseline;
+	color: rgb(38 38 38);
+}
+
+.username-main-container {
+	flex-direction: row;
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 16px;
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	padding: 0;
+	vertical-align: baseline;
+	align-items: stretch;
+	box-sizing: border-box;
+	flex-shrink: 0;
+	position: relative;
+}
+
+.username-left-side-container {
+	padding-left: 32px;
+	padding-right: 32px;
+	text-align: right;
+	box-sizing: border-box;
+	color: rgb(38 38 38);
+	flex: 0 0 194px;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 18px;
+	margin-top: 6px;
+	border: 0;
+	vertical-align: baseline;
+	display: block;
+}
+
+.username-left-side-text {
+	font-size: 16px;
+	font-weight: 600;
+	vertical-align: baseline;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	color: rgb(38 38 38);
+	cursor: default;
+	text-align: right;
+}
+
+.username-right-side-container {
+	flex-basis: 355px;
+	flex-direction: row;
+	padding-right: 60px;
+	align-items: stretch;
+	border: 0;
+	box-sizing: border-box;
+	color: rgb(38 38 38);
+	display: flex;
+	flex-grow: 1;
+	flex-shrink: 0;
+	font: inherit;
+	font-size: 16px;
+	justify-content: flex-start;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+.username-right-side-container-child {
+	width: 100%;
+	max-width: 355px;
+	flex: 0 0 auto;
+	justify-content: flex-start;
+	flex-direction: column;
+	align-items: stretch;
+	align-content: stretch;
+	display: inline-block;
+	box-sizing: border-box;
+	position: relative;
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+.username-input-edit-profile {
+	background: transparent;
+	border: 1px solid rgb(219 219 219);
+	border-radius: 3px;
+	box-sizing: border-box;
+	color: rgb(38 38 38);
+	flex: 0 1 355px;
+	font-size: 16px;
+	height: 32px;
+	padding: 0 10px;
+	width: 100%;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	line-height: 18px;
+}
+
+.edit-profile-bio-text-area {
+	background: transparent;
+	border: 1px solid rgb(219 219 219);
+	border-radius: 3px;
+	box-sizing: border-box;
+	color: rgb(38 38 38);
+	flex: 0 1 355px;
+	font-size: 16px;
+	height: 60px;
+	padding: 6px 10px;
+	resize: vertical;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	line-height: 14px;
+	max-width: 100%;
+	margin: 0;
+}
+
+.username-left-side-container-2 {
+	padding-left: 32px;
+	padding-right: 32px;
+	text-align: right;
+	box-sizing: border-box;
+	color: rgb(38 38 38);
+	flex: 0 0 194px;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 18px;
+	margin-top: 6px;
+}
+
+.edit-profile-buttons-container {
+	align-items: center;
+	border: 0;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 0;
+	font: inherit;
+	font-size: 100%;
+	margin: 0;
+	margin-top: 16px;
+	padding: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+.edit-profile-buttons-submit {
+	background-color: rgba(0, 149, 246, 0.3);
+	opacity: 1;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	position: relative;
+	color: white;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: block;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 5px 9px;
+	text-align: center;
+	text-overflow: ellipsis;
+	text-transform: inherit;
+	width: auto;
+	margin: 0;
+}
+
+.delete-account-button-container {
+	margin-left: 105px;
+	margin-right: 4px;
+	max-width: 240px;
+	padding: 0;
+	position: relative;
+	vertical-align: baseline;
+	align-items: flex-start;
+	border: 0;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	font: inherit;
+	font-size: 100%;
+	margin-right: 4px;
+	max-width: 240px;
+	padding: 0;
+	position: relative;
+	vertical-align: baseline;
+	color: rgb(38 38 38);
+}
+
+.delete-account-button {
+	border: 0;
+	color: rgb(0 149 246);
+	display: inline-block;
+	padding: 0;
+	position: relative;
+	background: none;
+	box-sizing: border-box;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	text-align: center;
+	text-overflow: ellipsis;
+	text-transform: inherit;
+	line-height: 18px;
+	width: auto;
+}
