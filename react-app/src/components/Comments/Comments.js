@@ -20,6 +20,7 @@ const Comments = ({ setShowModal }) => {
   const oneImage = useSelector((state) => state.images[id]);
   const [users, setUsers] = useState([]);
 
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("/api/users/");
@@ -31,6 +32,8 @@ const Comments = ({ setShowModal }) => {
 
   const account = useSelector((state) => state.session.user);
   const comments = Object.values(useSelector((state) => state.comments));
+  const user = useSelector((state) => state.user);
+  console.log(user)
 
   const [comment, setComment] = useState("");
 
@@ -97,23 +100,28 @@ const Comments = ({ setShowModal }) => {
             return (
               <div className="new-comment-div" key={comment.id}>
                 <p className="ptagz-comments">{comment?.comment}</p>
-                <p className="ptagz-usename">{comment?.username}</p>
+                <p className="ptagz-username">{comment?.username}</p>
                 {users.map((user) => {
                   return (
                     <>
                       <div className="prof-pic-contain" key={user.prof_pic_url}>
-                        {user?.id === comment?.id ? (
+                        {user?.id === comment?.user_id ? (
                           <>
+                            {/* {console.log(user, "THIS IS THE user")} */}
                             <img
                               src={user.prof_pic_url}
                               alt="prof pic"
                               key={user.id}
                             ></img>
+                            <div>
+                              {comment.likes}
+                            </div>
                           </>
                         ) : (
                           <></>
                         )}
                       </div>
+
                     </>
                   );
                 })}
