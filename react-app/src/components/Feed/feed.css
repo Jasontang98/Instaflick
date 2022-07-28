@@ -1,0 +1,53 @@
+body {
+  background-color: #fafafa;
+}
+
+#prof_pics {
+  height: 50px;
+  width: 50px;
+}
+
+.image-container {
+  width: 100px;
+  align-items: center;
+}
+
+.wholepage {
+  align-items: stretch;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+}
+
+.column-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 470px;
+}
+
+.card-container {
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background-color: #ffffff;
+  border: 1px solid #dbdbdb;
+  max-height: inherit;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#feed_img {
+  width: 469px;
+  height: 250px;
+  margin-left: -2.5px;
+
+}
+
+.container {
+  border:green solid 2px;
+}
+
+.userName{
+  text-decoration: none;
+}

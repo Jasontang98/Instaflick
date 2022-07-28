@@ -6,6 +6,7 @@ import { useParams, useHistory, Redirect } from "react-router-dom";
 import "./SingleImage.css";
 import EditImageModal from "../EditImage/";
 import Comments from "../Comments/";
+import { getAllUsers } from "../../store/user";
 
 const SingleImage = () => {
   const history = useHistory();
@@ -28,6 +29,7 @@ const SingleImage = () => {
 
     return () => {
       dispatch(cleanComments());
+      dispatch(getAllUsers());
     };
   }, [id, dispatch]);
 
