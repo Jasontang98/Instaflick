@@ -36,28 +36,33 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar loaded={loaded} />
       <Switch>
         <ProtectedRoute path="/users" exact={true}>
+          <NavBar loaded={loaded} />
           <UsersList />
         </ProtectedRoute>
 
         <ProtectedRoute path="/users/:userId" exact={true}>
+          <NavBar loaded={loaded} />
           <User />
         </ProtectedRoute>
 
         <ProtectedRoute path="/users/:userId/edit" exact={true}>
+          <NavBar loaded={loaded} />
           <EditUser />
         </ProtectedRoute>
 
         <ProtectedRoute path="/" exact={true}>
+          <NavBar loaded={loaded} />
           <h1>My Home Page</h1>
 
           <ProtectedRoute path="/images/:id/edit" exact={true}>
+            <NavBar loaded={loaded} />
             <EditImage />
           </ProtectedRoute>
 
           <ProtectedRoute path="/images/:id/comments/:id/edit" exact={true}>
+            <NavBar loaded={loaded} />
             <EditComment />
           </ProtectedRoute>
         </ProtectedRoute>
@@ -71,18 +76,22 @@ function App() {
         </Route>
 
         <Route path="/feed" exact={true}>
+          <NavBar loaded={loaded} />
           <Images />
         </Route>
 
         <Route path="/images/:id" exact={true}>
+          <NavBar loaded={loaded} />
           <SingleImage />
         </Route>
 
         <Route path="/accounts/edit" exact={true}>
+          <NavBar loaded={loaded} />
           <EditUser />
         </Route>
 
         <Route>
+          <NavBar loaded={loaded} />
           Sorry, this page isn't available.
           <div />
           <ul>
