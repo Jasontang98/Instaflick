@@ -11,6 +11,7 @@ const Images = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [users, setUsers] = useState([]);
 
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("/api/users/");
@@ -27,48 +28,56 @@ const Images = () => {
   if (!sessionUser) return <Redirect to="/signup" />;
 
   return (
-    <div className="tester">
-      <div className="images-background-image">
-        <div className="all-images-container">
-          {images.map((image) => (
+    <div className="wholepage">
+      <div className="column-container">
+        {images.map((image) => (
+          <div className="card-container">
             <div className="image-container" key={image.id}>
-              <NavLink exact to={`/images/${image.id}`}>
-                <ul>
-                  {users.map((user) => {
-                    return (
-                      <>
-                        <div
-                          className="prof-pic-contain"
-                          key={user.prof_pic_url}
-                        >
-                          {user?.username === image?.username ? (
-                            <>
-                              {console.log(image, "IMage")}
+
+              <div>
+                {users.map((user) => {
+                  return (
+                    <>
+                      <div
+                        className="prof-pic-contain"
+                        key={user.prof_pic_url}
+                      >
+                        {user?.id === image?.user_id ? (
+                          <>
+                            <NavLink exact to={`/users/${image.user_id}`}>
                               <img
                                 src={user?.prof_pic_url}
                                 alt="prof_pic_url"
                                 id="prof_pics"
                               />
-                              <div />
-                              <strong>{image.username}</strong>
-                            </>
-                          ) : (
-                            <></>
-                          )}
-                        </div>
-                      </>
-                    );
-                  })}
-                </ul>
-                <img
-                  alt="uploaded"
-                  className="image-frame"
-                  src={image.image_url}
-                />
-              </NavLink>
+                            </NavLink>
+                            <div />
+                            <NavLink className="userName" exact to={`/users/${image.user_id}`}>
+                              <p>{user.username}</p>
+                            </NavLink>
+                            <NavLink to={`/images/${image.id}`}>
+                              <img
+                                alt="uploaded"
+                                className="image-frame"
+                                src={image.image_url}
+                                id="feed_img"
+                              />
+                            </NavLink>
+                            <NavLink className="userName"exact to={`/users/${image.user_id}`}>
+                              <p>{user.username}</p>
+                            </NavLink>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );

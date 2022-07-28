@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 // import "./Navigation.css";
 
-
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -34,26 +33,28 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
+      {/* <button onClick={openMenu}> */}
+      <img
+        onClick={openMenu}
+        src={sessionUser.prof_pic_url}
+        alt="fas fa-user-circle"
+        className="fas fa-user-circle"
+        id="prof-pic-button"
+      />
+      {/* </button> */}
       {showMenu && (
-        <div className="navBar">
-          <ul className="profile-dropdown">
-            <ul>{user.username}</ul>
-            <ul>{user.email}</ul>
-            <ul>
-              <NavLink to={`/users/${sessionUser.id}`}>
-                <button type="button">
-                  Profile
-                </button>
-              </NavLink>
-            </ul>
-            <ul>
-              <button onClick={logout}>Log Out</button>
-            </ul>
-          </ul>
-        </div>
+        // <div className="navBar">
+        <ul id="profile-dropdown">
+          <ul>{user.username}</ul>
+          <ul>{user.email}</ul>
+          <div>
+            <NavLink to={`/users/${sessionUser.id}`}>
+              <button type="button">Profile</button>
+            </NavLink>
+          </div>
+          <button onClick={logout}>Log Out</button>
+        </ul>
+        // </div>
       )}
     </>
   );
