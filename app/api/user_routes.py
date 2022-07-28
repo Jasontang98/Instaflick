@@ -12,7 +12,7 @@ user_routes = Blueprint('users', __name__)
 
 
 @user_routes.route('/')
-@login_required
+# @login_required
 def users():
     users = User.query.all()
     return {'users': [user.to_dict() for user in users]}
@@ -36,7 +36,6 @@ def edit_user(id):
         file = request.files["file"]
         file_url = upload_file_to_s3(file, Config.S3_BUCKET)
         user.prof_pic_url = file_url
-
 
     db.session.add(user)
     db.session.commit()
