@@ -25,6 +25,9 @@ class Image(db.Model):
             'image_url': self.image_url,
             'username': self.username,
             'description': self.description,
+            # 'likes': self.image_likes,
+            # top line of code shows the objects themselves of users.
+            # bottom shows number of likes
             'likes': len(self.image_likes),
             'created_at': self.created_at
         }
