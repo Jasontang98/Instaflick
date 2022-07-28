@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllImages } from "../../../../react-app/src/store/images.js";
 import "./User.css";
+import { getSingleUser } from "../../store/user.js";
+// import { deleteSingleUser } from "../../store/session.js";
 // import EditUser from "../EditUser";
 
 function User() {
-  const [user, setUser] = useState({});
-
   const dispatch = useDispatch();
+  const history = useHistory();
   const { userId } = useParams();
+  const usersObject = useSelector((state) => state.user);
+  let user;
+  if (usersObject) {
+    user = usersObject[userId];
+  }
 
   const imagesObject = useSelector((state) => state.images);
   const account = useSelector((state) => state.session.user);
@@ -17,19 +23,9 @@ function User() {
   const images = Object.values(imagesObject);
 
   useEffect(() => {
-    if (!userId) {
-      return;
-    }
-    (async () => {
-      const response = await fetch(`/api/users/${userId}`);
-      const user = await response.json();
-      setUser(user);
-    })();
-  }, [userId]);
-
-  useEffect(() => {
+    dispatch(getSingleUser(userId));
     dispatch(getAllImages());
-  }, [dispatch]);
+  }, [dispatch, userId]);
 
   if (!user) {
     return null;
@@ -43,7 +39,7 @@ function User() {
         <strong>User Id</strong> {userId}
       </ul>
       <ul>
-        <strong>{user.username}</strong>
+        <strong>{user?.username}</strong>
         {account.id === parseInt(userId) ? (
           <div>
             <NavLink to="/accounts/edit">Edit profile</NavLink>
@@ -53,10 +49,10 @@ function User() {
         )}
       </ul>
       <ul>
-        <strong>Email</strong> {user.email}
+        <strong>Email</strong> {user?.email}
       </ul>
       {images.map((image) => (
-        <div className="image-container" key={image.id}>
+        <div key={image.id}>
           <NavLink exact to={`/images/${image.id}`}>
             {" "}
             {parseInt(userId) === image.user_id ? (
