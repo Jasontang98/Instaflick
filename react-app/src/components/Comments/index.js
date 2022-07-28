@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 function CommentsModal() {
   const [showModal, setShowModal] = useState(false);
   const comments = Object.values(useSelector((state) => state.comments));
-
+  console.log(comments, 'this is our comments')
   return (
     <>
       <button onClick={() => setShowModal(true)}>{`View all ${comments?.length} comments`}</button>
