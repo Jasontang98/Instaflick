@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { uploadImage } from "../../store/images";
@@ -6,6 +6,7 @@ import "./Upload.css";
 
 const UploadImage = ({ setShowModal }) => {
   const dispatch = useDispatch();
+  const hiddenRef = useRef();
 
   const user = useSelector((state) => state.session.user);
   const [description, setDescription] = useState("");
@@ -38,9 +39,18 @@ const UploadImage = ({ setShowModal }) => {
     setShowModal(false);
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    hiddenRef.current.click();
+  };
+
   const handleChange = async (e) => {
     const uploadFile = e.target.files[0];
     setFile(uploadFile);
+  };
+
+  const cancelButton = async (e) => {
+    setShowModal(false);
   };
 
   return (
@@ -56,13 +66,21 @@ const UploadImage = ({ setShowModal }) => {
                 </li>
               ))}
             </ul>
+            <div onClick={handleClick}>Upload Photo </div>
             <input
-              className="upload-input"
+              ref={hiddenRef}
+              hidden
               type="file"
-              name="image"
+              name="profile picture"
               onChange={handleChange}
-              accept=".jpg, .jpeg, .png, .gif, .jfif"
+              accept=".jpg, .jpeg, .png"
             />
+            <button className="submit-upload" type="submit">
+              Submit
+            </button>
+            <button type="button" onClick={cancelButton}>
+              Cancel
+            </button>
             <textarea
               className="upload-text-area"
               rows="7"
@@ -70,9 +88,6 @@ const UploadImage = ({ setShowModal }) => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-            <button className="submit-upload" type="submit">
-              Submit
-            </button>
           </form>
         </div>
       </div>
