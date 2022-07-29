@@ -60,20 +60,24 @@
 /* Images by user */
 .imgContainer {
     border-top: 1px solid rgba(38, 38, 38, .3);
-    display: flex;
     margin-top: 10px;
     padding-top: 52px;
-}
-
-.profImages {
-  width: 100px;
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .profimage {
-    /* height: 293px;
-    width: 293px; */
-    height: 50px;
-    width: 50px;
+    height: 293px;
+    width: 293px;
+    cursor: pointer;
+    padding-right: 28px;
+    padding-bottom: 28px;
 }
+
+/*
+.profImages {
+  width: 293px;
+  display: flex;
+  flex-wrap: wrap;
+
+} */
