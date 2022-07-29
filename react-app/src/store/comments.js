@@ -30,8 +30,8 @@ export const cleanComments = () => {
   };
 };
 
-export const getCommentsByImage = (image_id) => async (dispatch) => {
-  const response = await fetch(`/api/images/${image_id}/comments`);
+export const getCommentsByImage = (id) => async (dispatch) => {
+  const response = await fetch(`/api/images/${id}/comments`);
 
   if (response.ok) {
     const data = await response.json();
@@ -48,7 +48,6 @@ export const addAComment = (data) => async (dispatch) => {
   form.append("image_id", image_id);
   form.append("comment", comment);
   form.append("username", username);
-
 
   const response = await fetch(`/api/images/${image_id}`, {
     method: "POST",
