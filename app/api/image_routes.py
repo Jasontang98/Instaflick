@@ -125,11 +125,9 @@ def edit_comment(id, comment_id):
     # image = Image.query.get(id)
     comment = Comment.query.get(comment_id)
     form = comment_form.EditCommentForm()
-    print("\n\n\n\n", form.comment)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         comment.comment = form.comment.data
-        # print("this is comment \n\n\n", comment)
         db.session.add(comment)
         db.session.commit()
         return comment.to_dict()
@@ -137,7 +135,6 @@ def edit_comment(id, comment_id):
     # comment = Comment.query.get(comment_id)
     # comment.comment = request.json['comment']
     # db.session.add(comment)
-    # print(comment.comment, 'WHAT IS THIS')
     # db.session.commit()
     # return comment.to_dict()
 
