@@ -5,6 +5,7 @@ body {
 #prof_pics {
   height: 50px;
   width: 50px;
+  border-radius: 50%;
 }
 
 .image-container {
@@ -41,13 +42,12 @@ body {
   width: 469px;
   height: 250px;
   margin-left: -2.5px;
-
 }
 
 .container {
-  border:green solid 2px;
+  border: green solid 2px;
 }
 
-.userName{
+.userName {
   text-decoration: none;
 }
