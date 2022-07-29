@@ -20,7 +20,6 @@ const Comments = ({ setShowModal }) => {
   const oneImage = useSelector((state) => state.images[id]);
   const [users, setUsers] = useState([]);
 
-
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("/api/users/");
@@ -33,7 +32,7 @@ const Comments = ({ setShowModal }) => {
   const account = useSelector((state) => state.session.user);
   const comments = Object.values(useSelector((state) => state.comments));
   const user = useSelector((state) => state.user);
-  console.log(user)
+  console.log(user);
 
   const [comment, setComment] = useState("");
 
@@ -43,9 +42,9 @@ const Comments = ({ setShowModal }) => {
   useEffect(() => {
     dispatch(getCommentsByImage(id)).then(() => setLoaded(true));
 
-    return () => {
-      dispatch(cleanComments());
-    };
+    // return () => {
+    //   dispatch(cleanComments());
+    // };
   }, [id, dispatch]);
 
   const notLoggedIn = () => {
@@ -86,7 +85,7 @@ const Comments = ({ setShowModal }) => {
   //   setComment("");
   // };
 
-  if (!account) return <Redirect to="/signup" />;
+  if (!account) return <Redirect to="/login" />;
 
   return (
     isLoaded && (
@@ -113,15 +112,12 @@ const Comments = ({ setShowModal }) => {
                               alt="prof pic"
                               key={user.id}
                             ></img>
-                            <div>
-                              {comment.likes}
-                            </div>
+                            <div>{comment.likes}</div>
                           </>
                         ) : (
                           <></>
                         )}
                       </div>
-
                     </>
                   );
                 })}
