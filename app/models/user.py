@@ -1,8 +1,8 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from .image_like import image_likes
-from .comment_like import comment_likes
+from .image_like import Image_Like
+# from .comment_like import Comment_Like
 
 
 class User(db.Model, UserMixin):
@@ -18,8 +18,10 @@ class User(db.Model, UserMixin):
     # RELATIONSHIPS
     image = db.relationship('Image', back_populates='user', cascade='all, delete-orphan')
     comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
-    user_images_likes = db.relationship('Image', secondary=image_likes, back_populates='image_likes')
-    user_comments_likes = db.relationship('Comment', secondary=comment_likes, back_populates='comment_likes')
+    # user_images_likes = db.relationship('Image', secondary=image_likes, back_populates='image_likes')
+    # user_comments_likes = db.relationship('Comment', secondary=comment_likes, back_populates='comment_likes')
+    image_like = db.relationship('Image_Like', back_populates='user', cascade='all, delete-orphan')
+    # comment_likes = db.relationship('Comment_Like', back_populates='user', cascade='all, delete-orphan')
 
     @property
     def password(self):

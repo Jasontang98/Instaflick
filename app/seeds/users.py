@@ -1,4 +1,4 @@
-from app.models import db, User, Image
+from app.models import db, User
 
 
 # Adds a demo user, you can add other users here if you want
@@ -14,10 +14,12 @@ def seed_users():
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
-    image4 = Image(
-        user_id=1, username='bobbie', image_url='https://i.ytimg.com/vi/LTgE_5MhUTQ/maxresdefault.jpg', description='TFT2', image_likes=[marnie, bobbie])
+    # image4 = Image(
+    #     user_id=1, username='bobbie', image_url='https://i.ytimg.com/vi/LTgE_5MhUTQ/maxresdefault.jpg', description='TFT2', image_likes=[marnie, bobbie])
 
-    db.session.add(image4)
+    # db.session.add(image4)
+
+    
 
     db.session.commit()
 
