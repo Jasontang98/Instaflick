@@ -4,10 +4,10 @@ import botocore
 from flask import Blueprint, request, jsonify, render_template
 from flask_login import login_required, current_user
 from datetime import datetime
-from app.models import User, Image, Comment, db, image_likes
+from app.models import User, Image, Comment, db
 from app.config import Config
 from app.aws_s3 import *
-from app.forms import image_form, comment_form, likes_form
+from app.forms import image_form, comment_form
 
 image_routes = Blueprint('images', __name__)
 
@@ -36,40 +36,10 @@ def all_images():
 
 # Get Single Image
 @image_routes.route('/<int:id>')
-# @login_required
+@login_required
 def get_single_image(id):
     image = Image.query.get(id)
     return image.to_dict()
-
-# POST a LIKE on a single image
-@image_routes.route('/<int:id>', methods=['POST'])
-# @login_required
-def like_single_image(id):
-    current_image = Image.query.get(id)
-    print(current_image, 'should be an object')
-    print(current_image.to_dict(), 'what is here?????')
-    print(current_image.id, 'should be a number')
-    form = likes_form.LikeForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    # if form.validate_on_submit:
-    #     return current_image.image_likes.append(current_user).to_dict()
-    # return current_image.image_likes.append(current_user)
-    # form = likes_form.LikeForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        like = current_image.image_likes.append(current_user)
-        db.session.add(like)
-        db.session.commit()
-        return like.to_dict()
-
-# DELETE a LIKE on a single image
-# @image_routes.route('/<int:id>', method=['DELETE'])
-# # @login_required
-# def delete_like_single_image(id):
-#     current_image = Image.query.get(id)
-#     print(current_image.to_dict(), 'what should be here?')
-#     pass
-
 
 # Post a Single Image
 @image_routes.route('/', methods=['POST'])

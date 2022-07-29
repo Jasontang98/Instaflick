@@ -1,5 +1,5 @@
 from .db import db
-from .comment_like import comment_likes
+# from .comment_like import Comment_Like
 
 class Comment(db.Model):
     __tablename__ = 'comments'
@@ -13,7 +13,8 @@ class Comment(db.Model):
 
     user = db.relationship('User', back_populates='comment')
     image = db.relationship('Image', back_populates='comment')
-    comment_likes = db.relationship('User', secondary=comment_likes, back_populates='user_comments_likes')
+    # comment_likes = db.relationship('User', secondary=comment_likes, back_populates='user_comments_likes')
+    # comment_likes = db.relationship('Comment_Like', back_populates='comment_likes')
 
     def to_dict(self):
         return {
@@ -22,7 +23,7 @@ class Comment(db.Model):
             'image_id': self.image_id,
             'username': self.username,
             'comment': self.comment,
-            'likes': len(self.comment_likes),
+            # 'likes': len(self.comment_likes),
             'created_at': self.created_at
         }
 
