@@ -42,14 +42,13 @@ export const getCommentsByImage = (image_id) => async (dispatch) => {
 
 export const addAComment = (data) => async (dispatch) => {
   const { user_id, image_id, comment, username } = data;
-  // console.log(data, "THIS IS THE THUNK DATA");
 
   const form = new FormData();
   form.append("user_id", user_id);
   form.append("image_id", image_id);
   form.append("comment", comment);
   form.append("username", username);
-  // form.append("profpic", profpic);
+
 
   const response = await fetch(`/api/images/${image_id}`, {
     method: "POST",
@@ -75,7 +74,6 @@ export const deleteAComment = (image_id, comment_id) => async (dispatch) => {
 };
 
 export const editAComment = (comment) => async (dispatch) => {
-  console.log(comment);
   const formData = new FormData();
   formData.append("comment", comment.content);
 
