@@ -21,7 +21,7 @@ const EditSingleComment = ({ editedComment, setShowModal }) => {
       setValidationErrors(errors);
       return;
     }
-    console.log("this is our content", content);
+
     const data = {
       content,
       comments: editedComment,

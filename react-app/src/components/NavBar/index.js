@@ -2,8 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { NavLink } from "react-router-dom";
-// import LogoutButton from "../auth/LogoutButton";
-// import UploadImageModal from "../UploadImage/";
+
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 
@@ -40,9 +39,6 @@ const NavBar = ({ loaded }) => {
       {sessionUser ? (
         <>
           <NavLink to="/feed" exact={true} className="fa-solid fa-house" />
-          {/* <div />
-					<UploadImageModal />
-					<div /> */}
         </>
       ) : (
         <NavLink exact to="/signup" />

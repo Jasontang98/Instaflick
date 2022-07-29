@@ -1,10 +1,6 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  getLikesByImage,
-  addALike,
-  deleteALike,
-} from "../../store/image-likes";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getLikesByImage } from "../../store/image-likes";
 
 const ImageLike = ({ imageId }) => {
   const dispatch = useDispatch();
