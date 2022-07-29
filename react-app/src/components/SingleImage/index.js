@@ -14,7 +14,6 @@ const SingleImage = () => {
   const { id } = useParams();
 
   const oneImage = useSelector((state) => state.images[id]);
-  // console.log(oneImage, 'not undefined');
 
   const sessionUser = useSelector((state) => state.session.user);
   const account = useSelector((state) => state.session.user);
@@ -22,7 +21,6 @@ const SingleImage = () => {
   const [validationErrors, setValidationErrors] = useState([]);
 
   useEffect(() => {
-    // if (!account) history.push('/');
     dispatch(getSingleImage(id))
       .then(async () => await dispatch(getCommentsByImage(id)))
       .then(() => setLoaded(true));
@@ -40,7 +38,7 @@ const SingleImage = () => {
 
   if (!oneImage) return null;
 
-  if (!sessionUser) return <Redirect to="/signup" />;
+  if (!sessionUser) return <Redirect to="/login" />;
 
   return (
     isLoaded && (
@@ -75,9 +73,7 @@ const SingleImage = () => {
               </div>
               <h3 className="description">{oneImage.description}</h3>
             </div>
-            <div>
-              {oneImage.likes}
-            </div>
+            <div>{oneImage.likes.length} likes</div>
             <Comments />
           </div>
         </div>
