@@ -34,7 +34,6 @@ const removeImage = (id) => ({
 // GET ALL IMAGES
 export const getAllImages = () => async (dispatch) => {
   const response = await fetch("/api/images/feed");
-  // console.log(response);
 
   if (response.ok) {
     const data = await response.json();
