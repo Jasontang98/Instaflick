@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  NavLink,
+  Redirect,
+} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -54,13 +60,11 @@ function App() {
 
         <ProtectedRoute path="/" exact={true}>
           <NavBar loaded={loaded} />
-          <h1>My Home Page</h1>
-
+          <Redirect to="/feed" />
           <ProtectedRoute path="/images/:id/edit" exact={true}>
             <NavBar loaded={loaded} />
             <EditImage />
           </ProtectedRoute>
-
           <ProtectedRoute path="/images/:id/comments/:id/edit" exact={true}>
             <NavBar loaded={loaded} />
             <EditComment />
@@ -91,7 +95,7 @@ function App() {
         </Route>
 
         <Route>
-          <NavBar loaded={loaded} />
+          {/* <NavBar loaded={loaded} /> */}
           Sorry, this page isn't available.
           <div />
           <ul>
