@@ -32,92 +32,85 @@ const Images = () => {
 
 	return (
 		<div className="wholepage">
-			<div className="column-container">
-				{images.map((image) => (
-					<div className="card-container">
-						<div className="image-container" key={image.id}>
-							<div>
-								{users.map((user) => {
-									return (
-										<>
-											<div
-												className="prof-pic-contain"
-												key={user.prof_pic_url}
-											>
-												{user?.id === image?.user_id ? (
-													<>
-														<NavLink
-															exact
-															to={`/users/${image.user_id}`}
-														>
-															<img
-																src={user?.prof_pic_url}
-																alt="prof_pic_url"
-																id="prof_pics"
-															/>
-														</NavLink>
-														<div />
-														<NavLink
-															className="userName"
-															exact
-															to={`/users/${image.user_id}`}
-														>
-															<p>{user.username}</p>
-														</NavLink>
+		  <div className="column-container">
+			{images.map((image) => (
+			  <div className="card-container">
+				<div className="image-container" key={image.id}>
+				  <div>
+					{users.map((user) => {
+					  return (
+						<>
+						  <div className="prof-pic-contain" key={user.prof_pic_url}>
+							{user?.id === image?.user_id ? (
+							  <>
+								<NavLink exact to={`/users/${image.user_id}`}>
+								  <img
+									src={user?.prof_pic_url}
+									alt="prof_pic_url"
+									id="prof_pics"
+								  />
+								</NavLink>
+								<div />
+								<NavLink
+								  className="userName"
+								  exact
+								  to={`/users/${image.user_id}`}
+								>
+								  <p>{user.username}</p>
+								</NavLink>
 
-														<NavLink to={`/images/${image.id}`}>
-															<img
-																alt="uploaded"
-																className="image-frame"
-																src={image.image_url}
-																id="feed_img"
-															/>
-														</NavLink>
-														{console.log(
-															image,
-															'ADDING SOME SHIT 00000000000000000'
-														)}
-
-														<button
-															onClick={() =>
-																dispatch(addALike(image, sessionUser.id))
-															}
-															type="submit"
-														>
-															Like
-														</button>
-														<button
-															onClick={() =>
-																dispatch(deleteALike(image, sessionUser.id))
-															}
-															type="submit"
-														>
-															Dislike
-														</button>
-														{/* <div>{myFunc(image)} Likes </div> */}
-														<NavLink
-															className="userName"
-															exact
-															to={`/users/${image.user_id}`}
-														>
-															<p>{user.username}</p>
-														</NavLink>
-													</>
-												) : (
-													<></>
-												)}
-											</div>
-										</>
-									);
-								})}
-							</div>
-						</div>
-					</div>
-				))}
-			</div>
+								<NavLink to={`/images/${image.id}`}>
+								  <img
+									alt="uploaded"
+									className="image-frame"
+									src={image.image_url}
+									id="feed_img"
+								  />
+								</NavLink>
+								{image.likes.length}
+								{image.likes.filter((like) => {
+								  return sessionUser.id === like.user_id;
+								}).length === 0 ? (
+								  <button
+									onClick={() =>
+									  dispatch(addALike(image, sessionUser.id))
+									}
+									type="submit"
+								  >
+									Like
+								  </button>
+								) : (
+								  <button
+									onClick={() =>
+									  dispatch(deleteALike(image, sessionUser.id))
+									}
+									type="submit"
+								  >
+									Dislike
+								  </button>
+								)}
+								<NavLink
+								  className="userName"
+								  exact
+								  to={`/users/${image.user_id}`}
+								>
+								  <p>{user.username}</p>
+								</NavLink>
+							  </>
+							) : (
+							  <></>
+							)}
+						  </div>
+						</>
+					  );
+					})}
+				  </div>
+				</div>
+			  </div>
+			))}
+		  </div>
 		</div>
-	);
+	  );
+	};
 
-};
-
-export default Images;
+	export default Images;
