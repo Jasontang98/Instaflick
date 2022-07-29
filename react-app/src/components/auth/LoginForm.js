@@ -38,7 +38,9 @@ const LoginForm = () => {
 	};
 
 	if (user) {
-		return <Redirect to="/" />;
+		return <Redirect to="/feed" />;
+	} else {
+		<Redirect to="/login" />;
 	}
 
 	return (
@@ -48,8 +50,10 @@ const LoginForm = () => {
 					<article className="login-main-actual">
 						<div className="login-left-container">
 							<div className="login-images">
-								{/* <img classNAme='login-image-one' src='https://www.instagram.com/static/images/homepage/screenshots/screenshot3.png/94edb770accf.png'/>
-                <img className='login-image-two' src='https://www.instagram.com/static/images/homepage/screenshots/screenshot4.png/a4fd825e3d49.png'/> */}
+								<img
+									className="login-image-two"
+									src="https://www.instagram.com/static/images/homepage/screenshots/screenshot4.png/a4fd825e3d49.png"
+								/>
 							</div>
 						</div>
 						<div className="login-right-container">
@@ -59,6 +63,7 @@ const LoginForm = () => {
 										<img
 											className="instaflick-logo"
 											src="https://i.imgur.com/WZMyYs8.png"
+											alt="instaflick-logo"
 										/>
 									</div>
 								</div>
