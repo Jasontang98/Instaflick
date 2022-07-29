@@ -1,0 +1,79 @@
+.profileWholeContainer {
+    border: solid red 2px;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+}
+
+/* Container for both contents */
+.info-images {
+    border: solid blue 2px;
+    /* flex-direction: center;
+    align-items: center; */
+    width: calc(100% - 40px);
+    padding: 30px 20px 0;
+    max-width: 935px;
+}
+
+/* Top Containter with prof pic description username and edit button */
+.Topprof {
+    display: flex;
+    border: grey solid 2px;
+}
+
+.edit-prof-button {
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    padding: 5px 9px;
+    cursor: pointer;
+    height: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.edit-prof {
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgb(38, 38, 38);
+}
+
+.profUsername {
+    border: aqua solid 2px;
+}
+
+.Profpiccontainer {
+    border: purple solid 2px;
+}
+
+.profPic {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+.profDescription {
+    border: lightcoral solid 2px;
+}
+
+/* Images by user */
+.imgContainer {
+    border-top: 1px solid rgba(38, 38, 38, .3);
+    display: flex;
+    margin-top: 10px;
+    padding-top: 52px;
+}
+
+.profImages {
+  width: 100px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profimage {
+    /* height: 293px;
+    width: 293px; */
+    height: 50px;
+    width: 50px;
+}
