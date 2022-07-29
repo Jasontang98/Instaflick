@@ -45,15 +45,6 @@ const Images = () => {
 
 	if (!sessionUser) return <Redirect to="/login" />;
 
-	// -----------------------------WAITING FOR HUGO -------------------------------------------
-	// ONCE YOU GET GET THOSE 404 ERRORS TO WORK, WE NEED AN ARRAY OF OBJECTS INSIDE THE LIKES STORE
-
-	// const myFunc = image => {
-	// 	const imageLikes = likes.filter(like => like.image_id === image.id)
-	// 	return imageLikes.length
-	// }
-
-	// -----------------------------WAITING FOR HUGO -------------------------------------------
 
 	const singleImage = Object.values(images.map((image) => {}));
 	console.log(singleImage, '4544444444444444444444444');
