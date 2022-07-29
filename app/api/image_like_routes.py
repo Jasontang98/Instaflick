@@ -14,7 +14,7 @@ image_like_routes = Blueprint('likes', __name__)
 # GET LIKES ON A SINGLE IMAGE
 
 @image_like_routes.route('/<int:id>')
-@login_required
+# @login_required
 def get_likes_on_image(id):
     image = Image.query.get(id)
     return image.to_dict()
@@ -22,7 +22,7 @@ def get_likes_on_image(id):
 # POST A LIKE ON A SINGLE IMAGE
 
 @image_like_routes.route('/<int:id>', methods=['POST'])
-@login_required
+# @login_required
 def post_like_on_image(id):
     image = Image.query.get(id)
     form = like_image_form.LikeForm()
@@ -40,7 +40,7 @@ def post_like_on_image(id):
 
 
 @image_like_routes.route('/<int:id>/like/<int:like_id>', methods=['DELETE'])
-@login_required
+# @login_required
 def remove_like_on_image(id, like_id):
     image = Image.query.get(id)
     like = Image_Like.query.get(like_id)
