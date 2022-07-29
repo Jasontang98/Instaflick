@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import UploadImageModal from "../UploadImage/";
-// import "./Navigation.css";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -79,8 +78,6 @@ function ProfileButton({ user }) {
                   <div className="drop-down-container-child">
                     {showMenu && (
                       <ul id="profile-dropdown">
-                        {/* <ul>{user.username}</ul>
-										<ul>{user.email}</ul> */}
                         <div>
                           <NavLink to={`/users/${sessionUser.id}`}>
                             <button type="button">Profile</button>
