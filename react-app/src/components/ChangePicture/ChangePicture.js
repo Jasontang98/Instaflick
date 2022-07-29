@@ -10,7 +10,6 @@ const ChangePicture = ({ setShowModal }) => {
   const hiddenRef = useRef();
 
   const user = useSelector((state) => state.session.user);
-  // const { userId } = useParams();
 
   const [username] = useState(user?.username);
   const [description] = useState(user?.description);
@@ -27,8 +26,6 @@ const ChangePicture = ({ setShowModal }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = [];
-
-    // if (description.length > 500) errors.push("Content is too long");
 
     if (errors.length) {
       setValidationErrors(errors);
@@ -57,63 +54,62 @@ const ChangePicture = ({ setShowModal }) => {
     setShowModal(false);
   };
 
+  return (
+    <div className="edit-profile-main-container">
+      <div className="edit-profile-main-container-child">
+        <div className="upload-photo-modal-container">
+          <div className="upload-photo-modal-container-child">
+            <div className="upload-photo-modal-divider">
+              <div className="upload-text-container">
+                <h3 className="upload-text-h3" tabIndex="-1">
+                  Change Profile Photo
+                </h3>
+              </div>
 
-	return (
-		<div className="edit-profile-main-container">
-			<div className="edit-profile-main-container-child">
-				<div className="upload-photo-modal-container">
-					<div className="upload-photo-modal-container-child">
-						<div className="upload-photo-modal-divider">
-							<div className="upload-text-container">
-								<h3 className="upload-text-h3" tabIndex="-1">
-									Change Profile Photo
-								</h3>
-							</div>
-							<div className="upload-bottom-part-container">
-								<form onSubmit={handleSubmit}>
-									<div
-										tabIndex="0"
-										className="upload-photo-button2"
-										onClick={handleClick}
-									>
-										Upload Photo{' '}
-									</div>
-									<input
-										ref={hiddenRef}
-										hidden
-										type="file"
-										name="profile picture"
-										onChange={handleChange}
-										accept=".jpg, .jpeg, .png"
-									/>
-									<div className="upload-photo-button">
-										<button
-											className="submit-upload-modal-button"
-											type="submit"
-										>
-											Submit
-										</button>
-									</div>
-								</form>
+              <div className="upload-bottom-part-container">
+                <form onSubmit={handleSubmit} className="upload-button-1">
+                  <div
+                    tabIndex="0"
+                    className="upload-photo-button2"
+                    onClick={handleClick}
+                  >
+                    Upload Photo{" "}
+                  </div>
+                  <div className="upload-photo-button-3">
+                    <input
+                      ref={hiddenRef}
+                      hidden
+                      type="file"
+                      name="profile picture"
+                      onChange={handleChange}
+                      accept=".jpg, .jpeg, .png"
+                    />
+                    <button
+                      className="submit-upload-modal-button"
+                      type="submit"
+                    >
+                      Submit
+                    </button>
+                  </div>{" "}
+                </form>
 
-								<div className="upload-photo-button">
-									<button
-										className="edit-cancel-button"
-										type="button"
-										onClick={cancelButton}
-									>
-										Cancel
-									</button>
-								</div>
-								<div></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
-
+                <div className="upload-photo-button">
+                  <button
+                    className="edit-cancel-button"
+                    type="button"
+                    onClick={cancelButton}
+                  >
+                    Cancel
+                  </button>
+                </div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ChangePicture;

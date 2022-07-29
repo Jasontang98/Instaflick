@@ -7,7 +7,6 @@ import {
   getCommentsByImage,
   deleteAComment,
   addAComment,
-  cleanComments,
 } from "../../store/comments";
 
 const Comments = ({ setShowModal }) => {
@@ -17,7 +16,6 @@ const Comments = ({ setShowModal }) => {
 
   const { id } = useParams();
 
-  const oneImage = useSelector((state) => state.images[id]);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -31,8 +29,6 @@ const Comments = ({ setShowModal }) => {
 
   const account = useSelector((state) => state.session.user);
   const comments = Object.values(useSelector((state) => state.comments));
-  const user = useSelector((state) => state.user);
-  console.log(user);
 
   const [comment, setComment] = useState("");
 
@@ -41,10 +37,6 @@ const Comments = ({ setShowModal }) => {
 
   useEffect(() => {
     dispatch(getCommentsByImage(id)).then(() => setLoaded(true));
-
-    // return () => {
-    //   dispatch(cleanComments());
-    // };
   }, [id, dispatch]);
 
   const notLoggedIn = () => {
@@ -73,27 +65,12 @@ const Comments = ({ setShowModal }) => {
     setComment("");
   };
 
-  // const editSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const data = {
-  //     comment,
-  //     //   id: oneImage?.id,
-  //     comment_id: comments?.id,
-  //   };
-
-  //   await dispatch(editAComment(data));
-  //   setComment("");
-  // };
-
   if (!account) return <Redirect to="/login" />;
 
   return (
     isLoaded && (
       <>
         <h1 className="comments-single-image">Comments</h1>
-        <div>
-          <img src={oneImage.image_url} alt="uploaded"></img>
-        </div>
         <div className="comments">
           {comments.map((comment) => {
             return (
@@ -106,7 +83,6 @@ const Comments = ({ setShowModal }) => {
                       <div className="prof-pic-contain" key={user.prof_pic_url}>
                         {user?.id === comment?.user_id ? (
                           <>
-                            {/* {console.log(user, "THIS IS THE user")} */}
                             <img
                               src={user.prof_pic_url}
                               alt="prof pic"
