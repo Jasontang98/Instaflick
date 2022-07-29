@@ -1,33 +1,23 @@
+import { getAllImages } from "../../../../react-app/src/store/images.js";
 
-import { getAllImages } from '../../../../react-app/src/store/images.js';
-import { getCommentsByImage } from '../../store/comments.js';
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Redirect, useParams } from 'react-router-dom';
-import {
-	getLikesByImage,
-	addALike,
-	deleteALike,
-} from '../../store/image-likes';
-import './feed.css';
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { NavLink, Redirect } from "react-router-dom";
+import { addALike, deleteALike } from "../../store/image-likes";
+import "./feed.css";
 
 const Images = () => {
-	const { id } = useParams();
 	const dispatch = useDispatch();
 	const imagesObject = useSelector((state) => state.images);
 	const images = Object.values(imagesObject);
+
 	const sessionUser = useSelector((state) => state.session.user);
-	console.log(sessionUser, '--------------------------');
-	// const likesObject = useSelector((state) => state.likes);
+
 	const [users, setUsers] = useState([]);
-	const [like, setLike] = useState(false);
-	// console.log(likesObject,' 8788888888888888888888')
-
-
 
 	useEffect(() => {
 		async function fetchData() {
-			const response = await fetch('/api/users/');
+			const response = await fetch("/api/users/");
 			const responseData = await response.json();
 			setUsers(responseData.users);
 		}
@@ -35,37 +25,10 @@ const Images = () => {
 	}, []);
 
 	useEffect(() => {
-		dispatch(getAllImages()).then(
-			async () =>
-				await dispatch(getCommentsByImage(id)).then(
-					async () => await dispatch(getLikesByImage(id))
-				)
-		);
-	}, [dispatch, id]);
+		dispatch(getAllImages());
+	}, [dispatch]);
 
 	if (!sessionUser) return <Redirect to="/login" />;
-
-
-	const singleImage = Object.values(images.map((image) => {}));
-	console.log(singleImage, '4544444444444444444444444');
-	// const newVariable = Object.values(singleImage)
-
-	// const handleLikes = async (image) => {
-	// 	if (image?.likes.length) {
-	// 		await dispatch(addALike(likesObject?.image_id));
-	// 		setLike(true);
-	// 	}
-	// };
-
-	// let image_id;
-	// images.map((image) => {
-	//   console.log(image.likes, '7777777777777777777777777777')
-	// 	image_id = image?.id;
-	// });
-
-	// const likePic = (image_id) => {
-	// 	dispatch(addALike(image_id));
-	// };
 
 	return (
 		<div className="wholepage">
