@@ -14,6 +14,7 @@ const SingleImage = () => {
   const { id } = useParams();
 
   const oneImage = useSelector((state) => state.images[id]);
+  // console.log(oneImage.likes.length, "not undefined");
 
   const sessionUser = useSelector((state) => state.session.user);
   const account = useSelector((state) => state.session.user);
@@ -21,6 +22,8 @@ const SingleImage = () => {
   const [validationErrors, setValidationErrors] = useState([]);
 
   useEffect(() => {
+    // console.log(getSingleImage(id));
+    // if (!account) history.push('/');
     dispatch(getSingleImage(id))
       .then(async () => await dispatch(getCommentsByImage(id)))
       .then(() => setLoaded(true));
