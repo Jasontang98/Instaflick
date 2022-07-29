@@ -1,12 +1,12 @@
-from app.models import db, image_likes
+from app.models import db, Image_Like
 
 # Adds a demo user, you can add other users here if you want
 def seed_image_likes():
-    image_like1 = image_likes(
+    image_like1 = Image_Like(
         user_id=1, image_id=1)
-    image_like2 = image_likes(
+    image_like2 = Image_Like(
         user_id=2, image_id=2)
-    image_like3 = image_likes(
+    image_like3 = Image_Like(
         user_id=3, image_id=3)
 
     db.session.add(image_like1)
