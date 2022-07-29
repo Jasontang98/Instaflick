@@ -5,8 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory, Redirect } from "react-router-dom";
 import "./SingleImage.css";
 import EditImageModal from "../EditImage/";
-import Comments from "../Comments/";
+import Comments from "../Comments/Comments";
 import { getAllUsers } from "../../store/user";
+import { addALike, deleteALike } from "../../store/image-likes";
 
 const SingleImage = () => {
   const history = useHistory();
@@ -14,7 +15,6 @@ const SingleImage = () => {
   const { id } = useParams();
 
   const oneImage = useSelector((state) => state.images[id]);
-  // console.log(oneImage.likes.length, "not undefined");
 
   const sessionUser = useSelector((state) => state.session.user);
   const account = useSelector((state) => state.session.user);
@@ -22,8 +22,6 @@ const SingleImage = () => {
   const [validationErrors, setValidationErrors] = useState([]);
 
   useEffect(() => {
-    // console.log(getSingleImage(id));
-    // if (!account) history.push('/');
     dispatch(getSingleImage(id))
       .then(async () => await dispatch(getCommentsByImage(id)))
       .then(() => setLoaded(true));
@@ -76,7 +74,27 @@ const SingleImage = () => {
               </div>
               <h3 className="description">{oneImage.description}</h3>
             </div>
+            {oneImage.likes.filter((like) => {
+              return sessionUser.id === like.user_id;
+            }).length === 0 ? (
+              <img
+                className="like-button"
+                src="https://i.imgur.com/JEkOshg.png"
+                onClick={() => dispatch(addALike(oneImage, sessionUser.id))}
+                type="submit"
+                alt="like-button"
+              ></img>
+            ) : (
+              <img
+                className="like-button"
+                src="https://i.imgur.com/XXQN4Dk.png"
+                onClick={() => dispatch(deleteALike(oneImage, sessionUser.id))}
+                type="submit"
+                alt="dislike-button"
+              ></img>
+            )}
             <div>{oneImage.likes.length} likes</div>
+
             <Comments />
           </div>
         </div>

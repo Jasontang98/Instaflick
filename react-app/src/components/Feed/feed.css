@@ -51,3 +51,9 @@ body {
 .userName {
   text-decoration: none;
 }
+
+
+.like-button {
+  height: 24px;
+  width: 24px;
+}
