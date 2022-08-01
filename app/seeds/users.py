@@ -19,7 +19,7 @@ def seed_users():
 
     # db.session.add(image4)
 
-    
+
 
     db.session.commit()
 
