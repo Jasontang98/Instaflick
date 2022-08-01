@@ -92,7 +92,7 @@ body {
 .feed-image-description{
   padding-left: 8px;
   display: flex;
-  word-break: break-all;
+  word-break: break-word;
   flex-wrap: wrap;
   width:400px;
 }
