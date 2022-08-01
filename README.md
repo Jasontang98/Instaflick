@@ -4,7 +4,7 @@
 
 https://instaflick-app.herokuapp.com/login
 
-## About Liqr
+## About Instaflick
 
 Welcome to Instaflick! Instaflick is an Instagram clone made for users to socialize. Users can post images, comment on other user's posts, and interact with one another.
 
