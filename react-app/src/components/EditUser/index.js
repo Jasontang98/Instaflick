@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useHistory, Redirect, NavLink } from "react-router-dom";
-import { editSingleUser, getSingleUser } from "../../store/user";
+import { useHistory, Redirect } from "react-router-dom";
+import { getSingleUser } from "../../store/user";
 import { editSessionUser, deleteSingleUser } from "../../store/session";
 import "./editUser.css";
 import ChangePicture from "../ChangePicture";
+// import RemoveAccountModal from "../../context/RemoveAccountModal/removeaccountmodal";
 
 const EditUser = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const EditUser = () => {
   const [username, setUsername] = useState(user?.username);
 
   const [description, setDescription] = useState(user?.description);
-  const [file, setFile] = useState(user?.prof_pic_url);
+  const [file] = useState(user?.prof_pic_url);
   const [validationErrors, setValidationErrors] = useState([]);
 
   const history = useHistory();
@@ -24,9 +25,15 @@ const EditUser = () => {
     e.preventDefault();
     const errors = [];
 
+    if (username.length > 40)
+      errors.push("Username cannot be more than 40 characters long.");
+
+    if (description.length > 500)
+      errors.push("Description cannot be more than 500 characters.");
+
     if (errors.length) {
       setValidationErrors(errors);
-      return;
+      return errors;
     }
 
     const data = {
@@ -39,6 +46,13 @@ const EditUser = () => {
     await dispatch(getSingleUser(user?.id));
     await dispatch(editSessionUser(data));
     history.push(`/users/${user?.id}`);
+  };
+
+  const confirmDelete = async () => {
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm("Are you sure you want to remove your account from Instaflick?")) {
+      dispatch(deleteSingleUser(user?.id)).then(history.push("/login"));
+    }
   };
 
   if (!account) return <Redirect to="/login" />;
@@ -138,14 +152,7 @@ const EditUser = () => {
                                             <button
                                               className="delete-account-button"
                                               type="submit"
-                                              onClick={() =>
-                                                dispatch(
-                                                  deleteSingleUser(user?.id)
-                                                ).then(() => {
-                                                  history.push("/login");
-                                                  window.location.reload();
-                                                })
-                                              }
+                                              onClick={() => confirmDelete()}
                                             >
                                               Remove my account from Instaflick
                                             </button>
@@ -153,14 +160,13 @@ const EditUser = () => {
                                         </div>
                                       </div>
                                     </div>
-
-                                    <ul>
-                                      {validationErrors.map((error, idx) => (
-                                        <li className="errors-signup" key={idx}>
+                                    <div className="error-handler-login">
+                                      {validationErrors.map((error, ind) => (
+                                        <div className="error-ptag" key={ind}>
                                           {error}
-                                        </li>
+                                        </div>
                                       ))}
-                                    </ul>
+                                    </div>
                                   </form>
                                 </article>
                               </div>

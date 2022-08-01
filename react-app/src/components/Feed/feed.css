@@ -2,15 +2,27 @@ body {
   background-color: #fafafa;
 }
 
+.feed-prof-pic-container {
+  margin-left: 20px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.feed-username-top{
+  margin-left: 15px;
+}
+
 #prof_pics {
-  height: 50px;
-  width: 50px;
+  height: 42px;
+  width: 42px;
   border-radius: 50%;
 }
 
+
 .image-container {
-  width: 100px;
+  max-width: 468px;
   align-items: center;
+
 }
 
 .wholepage {
@@ -23,7 +35,7 @@ body {
 
 .column-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   margin: 0 auto;
   width: 470px;
 }
@@ -39,21 +51,54 @@ body {
 }
 
 #feed_img {
-  width: 469px;
-  height: 250px;
-  margin-left: -2.5px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.container {
-  border: green solid 2px;
-}
 
 .userName {
   text-decoration: none;
+  color: rgb(38 38 38);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
+
+.feed-likes-container{
+  padding: 8px;
+}
 
 .like-button {
   height: 24px;
   width: 24px;
+}
+
+.feed-likes-number {
+  padding-left: 8px;
+  color: rgb(38, 38, 38);
+  font-weight: 600;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.feed-bottom-username {
+  display: flex;
+  padding-left: 8px;
+}
+
+.feed-image-description{
+  padding-left: 8px;
+  display: flex;
+  word-break: break-all;
+  flex-wrap: wrap;
+  width:400px;
+}
+
+.image-description{
+  color: rgb(38, 38, 38);
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }

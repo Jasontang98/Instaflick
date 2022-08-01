@@ -99,9 +99,10 @@ export const login = (email, password) => async (dispatch) => {
     if (data.errors) {
       return data.errors;
     }
-  } else {
-    return ["An error occurred. Please try again."];
   }
+  // else {
+  //   return ["An error occurred. Please try again."];
+  // }
 };
 
 export const logout = () => async (dispatch) => {
@@ -138,9 +139,10 @@ export const signUp = (username, email, password) => async (dispatch) => {
     if (data.errors) {
       return data.errors;
     }
-  } else {
-    return ["An error occurred. Please try again."];
   }
+  // else {
+  //   return ["An error occurred. Please try again."];
+  // }
 };
 
 export default function reducer(state = initialState, action) {

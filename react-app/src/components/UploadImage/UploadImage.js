@@ -24,7 +24,7 @@ const UploadImage = ({ setShowModal }) => {
 
     if (errors.length) {
       setValidationErrors(errors);
-      return;
+      return errors;
     }
 
     const data = {
@@ -54,41 +54,75 @@ const UploadImage = ({ setShowModal }) => {
   };
 
   return (
-    <div>
-      <div>
-        <div>
-          <h1 className="upload-image-h1">Upload Image</h1>
-          <form className="upload-form" onSubmit={handleSubmit}>
-            <ul>
-              {validationErrors.map((error, idx) => (
-                <li className="errors-signup" key={idx}>
-                  {error}
-                </li>
-              ))}
-            </ul>
-            <div onClick={handleClick}>Upload Photo </div>
-            <input
-              ref={hiddenRef}
-              hidden
-              type="file"
-              name="profile picture"
-              onChange={handleChange}
-              accept=".jpg, .jpeg, .png"
-            />
-            <button className="submit-upload" type="submit">
-              Submit
-            </button>
-            <button type="button" onClick={cancelButton}>
-              Cancel
-            </button>
-            <textarea
-              className="upload-text-area"
-              rows="7"
-              placeholder="Description (OPTIONAL)"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </form>
+    <div className="edit-profile-main-container">
+      <div className="edit-profile-main-container-child">
+        <div className="upload-photo-modal-container">
+          <div className="upload-photo-modal-container-child">
+            <div className="upload-photo-modal-divider">
+              <div className="upload-text-container">
+                <h3 className="upload-text-h3" tabIndex="-1">
+                  Upload Image
+                </h3>
+              </div>
+
+              <div className="upload-bottom-part-container">
+                <form onSubmit={handleSubmit} className="upload-button-1">
+                  <div
+                    tabIndex="0"
+                    className="upload-photo-button2"
+                    onClick={handleClick}
+                  >
+                    Upload Photo
+                  </div>
+                  <div className="upload-photo-button-3">
+                    <input
+                      ref={hiddenRef}
+                      hidden
+                      type="file"
+                      name="profile picture"
+                      onChange={handleChange}
+                      accept=".jpg, .jpeg, .png"
+                    />
+                    <strong>{file?.name}</strong>
+                    <div />
+                    <button
+                      className="submit-upload-modal-button"
+                      type="submit"
+                    >
+                      Submit
+                    </button>
+                  </div>{" "}
+                  <div className="error-handler-upload">
+                    {validationErrors.map((error, ind) => (
+                      <div className="error-ptag-upload" key={ind}>
+                        {error}
+                      </div>
+                    ))}
+                  </div>
+                </form>
+                <div>
+                  <textarea
+                    className="edit-profile-bio-text-area-2"
+                    rows="7"
+                    placeholder="Description (OPTIONAL)"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
+                </div>
+
+                <div className="upload-photo-button">
+                  <button
+                    className="edit-cancel-button"
+                    type="button"
+                    onClick={cancelButton}
+                  >
+                    Cancel
+                  </button>
+                  <div />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

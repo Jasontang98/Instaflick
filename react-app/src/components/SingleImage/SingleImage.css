@@ -1,0 +1,198 @@
+.single-image-arranger {
+	justify-content: normal;
+	padding: calc(4vh) 20px 0;
+	width: calc(100% - 40px);
+	box-sizing: content-box;
+	flex-grow: 1;
+	margin: 0 auto;
+	margin-bottom: 16px;
+	max-width: 935px;
+}
+
+.main-container-single-image {
+	max-width: 816px;
+	align-items: center;
+	display: flex;
+	position: relative;
+	width: 100%;
+}
+
+.main-container-single-image-child {
+	border-bottom-right-radius: 3px;
+	border-top-right-radius: 3px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: 100%;
+	max-height: inherit;
+	padding: 0;
+	background-color: rgb(255, 255, 255);
+	border: 1px solid rgb(219, 219, 219);
+}
+
+.main-container-final {
+	max-height: inherit;
+	max-width: inherit;
+	flex: 0 0 auto;
+	justify-content: center;
+	flex-direction: row;
+	align-items: stretch;
+	align-content: stretch;
+	display: flex;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.single-image-left-side-container {
+	flex-grow: 1;
+	justify-content: center;
+	min-height: 450px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	pointer-events: auto;
+	position: relative;
+	background-color: rgb(250, 250, 250);
+}
+
+.single-image-image2 {
+	object-fit: contain;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.single-image-right-side-container {
+	border-left: 1px solid rgb(219 219 219);
+	max-width: 400px;
+}
+
+.right-side-profpic-container {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid rgb(219 219 219);
+	flex: 0 0 auto;
+	justify-content: space-between;
+	flex-direction: row;
+	align-content: stretch;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.username-container {
+	margin-left: 14px;
+	align-items: flex-start;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	flex-shrink: 1;
+	overflow: hidden;
+	position: relative;
+}
+
+.username-container-child {
+	max-width: 100%;
+	align-items: baseline;
+	display: flex;
+	flex-direction: row;
+	position: relative;
+}
+
+.username-container-grandchild {
+	align-items: center;
+	box-sizing: border-box;
+	flex-grow: 1;
+	flex-shrink: 1;
+	font: inherit;
+	font-size: 100%;
+	margin: 0;
+	max-width: 100%;
+	overflow: hidden;
+	padding: 2px;
+	position: relative;
+	top: 1px;
+	vertical-align: baseline;
+}
+
+.username-single-image {
+	color: rgb(38 38 38);
+	font-weight: 600;
+	font-size: 14px;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.username-navlink-singleimage{
+    text-decoration: none;
+}
+
+.name-above-description{
+	margin-left: 14px;
+	width: 38px;
+}
+
+.single-image-description-comment-container {
+	display: flex;
+	align-items: center;
+	margin-left: 14px;
+	margin-right: 14px;
+	max-width: 334px;
+	max-height: 500px;
+	/* flex-wrap: wrap;
+	overflow-y: scroll; */
+}
+
+
+.single-image-description {
+	/* display: flex; */
+	word-break: break-all;
+	/* flex-wrap: wrap; */
+	width: 334px;
+	margin-right: 14px;
+	margin-left:14px;
+}
+
+
+.edit-delete-button{
+	display: flex;
+	margin-left: 8px;
+}
+
+.single-edit-button {
+	margin-right: 30px;
+	margin-bottom: 10px;
+}
+
+
+.single-delete-button {
+	margin-left: 190px;
+	margin-right: 10px;
+}
+
+#delete-button {
+	background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+#delete-button:hover{
+	color: red;
+}
+
+#single-image-edit {
+	background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+#single-image-edit:hover {
+	color: red;
+}

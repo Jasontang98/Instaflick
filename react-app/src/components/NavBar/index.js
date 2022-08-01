@@ -30,19 +30,11 @@ const NavBar = ({ loaded }) => {
         </NavLink>
       </div>
       <div />
-      <div>
+      {/* <div>
         <NavLink to="/users" exact={true} activeClassName="active">
           Users
         </NavLink>
-      </div>
-      <div />
-      {sessionUser ? (
-        <>
-          <NavLink to="/feed" exact={true} className="fa-solid fa-house" />
-        </>
-      ) : (
-        <NavLink exact to="/signup" />
-      )}
+      </div> */}
       {loaded && sessionLinks}
     </nav>
   );
