@@ -1,27 +1,27 @@
 .profileWholeContainer {
-    border: solid red 2px;
+    /* border: solid red 2px; */
     display: flex;
     height: 100vh;
     justify-content: center;
-}
+  }
 
-/* Container for both contents */
-.info-images {
-    border: solid blue 2px;
+  /* Container for both contents */
+  .info-images {
+    /* border: solid blue 2px; */
     /* flex-direction: center;
-    align-items: center; */
+      align-items: center; */
     width: calc(100% - 40px);
-    padding: 30px 20px 0;
     max-width: 935px;
-}
+  }
 
-/* Top Containter with prof pic description username and edit button */
-.Topprof {
+  /* Top Containter with prof pic description username and edit button */
+  .Topprof {
     display: flex;
-    border: grey solid 2px;
-}
+    margin-bottom: 50px;
+    /* border: grey solid 2px; */
+  }
 
-.edit-prof-button {
+  .edit-prof-button {
     border: 1px solid #dbdbdb;
     border-radius: 4px;
     padding: 5px 9px;
@@ -29,55 +29,96 @@
     height: 18px;
     display: flex;
     align-items: center;
-}
+    /* max-width: 72px; */
+    margin-left: 30px;
+  }
 
-.edit-prof {
+  .edit-prof {
     font-size: 14px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+      Arial, sans-serif;
     font-weight: 600;
     text-decoration: none;
     color: rgb(38, 38, 38);
-}
+  }
 
-.profUsername {
-    border: aqua solid 2px;
-}
+  .allinfo {
+    /* border: aqua solid 2px; */
+    height: 100%;
+    width: 740px;
+  }
 
-.Profpiccontainer {
-    border: purple solid 2px;
-}
+  .userandedit {
+    display: flex;
+    align-items: center;
+  }
 
-.profPic {
+  .profUsername {
+    color: rgb(38 38 38);
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 32px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+      Arial, sans-serif;
+    margin-left: 50px;
+  }
+
+  .Profpiccontainer {
+    /* border: purple solid 2px; */
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  }
+
+  .profPic {
     height: 150px;
     width: 150px;
     border-radius: 50%;
-}
+    justify-content: center;
+    display: flex;
+  }
 
-.profDescription {
-    border: lightcoral solid 2px;
-}
+  .prof-description-container {
+    /* border: red solid 1px; */
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+    /* inline-size: min-content; */
+  }
 
-/* Images by user */
-.imgContainer {
-    border-top: 1px solid rgba(38, 38, 38, .3);
+  .profDescription {
+    color: rgb(38 38 38);
+    font-weight: 400;
+    margin-left: 50px;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+      Arial, sans-serif;
+  }
+
+  /* Images by user */
+  .imgContainer {
+    border-top: 1px solid rgba(38, 38, 38, 0.3);
     margin-top: 10px;
     padding-top: 52px;
     display: flex;
     flex-wrap: wrap;
-}
+    justify-content: flex-start;
+  }
 
-.profimage {
-    height: 293px;
-    width: 293px;
+  .profimage {
+    height: 280px;
+    width: 280px;
     cursor: pointer;
-    padding-right: 28px;
     padding-bottom: 28px;
-}
+    padding-left: 14px;
+    padding-right: 14px;
+    object-fit: contain;
+  }
 
-/*
-.profImages {
-  width: 293px;
-  display: flex;
-  flex-wrap: wrap;
+  /*
+  .profImages {
+    width: 293px;
+    display: flex;
+    flex-wrap: wrap;
 
-} */
+  } */

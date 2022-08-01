@@ -40,11 +40,13 @@ function ProfileButton({ user }) {
             <div className="nav-bar-logo-section">
               <div className="nav-bar-logo-section-child">
                 <div className="nav-bar-logo-section-child-2">
-                  <img
-                    className="instaflick-logo-navbar"
-                    src="https://i.imgur.com/WZMyYs8.png"
-                    alt="instaflick-logo"
-                  />
+                  <NavLink to="/feed">
+                    <img
+                      className="instaflick-logo-navbar"
+                      src="https://i.imgur.com/WZMyYs8.png"
+                      alt="instaflick-logo"
+                    />
+                  </NavLink>
                 </div>
               </div>
             </div>
@@ -52,12 +54,13 @@ function ProfileButton({ user }) {
               <div className="navbar-right-side-container-components">
                 <div>
                   <div className="feed-button-container">
-                    <NavLink
-                      id="feed-button"
-                      to="/feed"
-                      exact={true}
-                      className="fa-solid fa-house"
-                    />
+                    <NavLink id="feed-button" to="/feed" exact={true}>
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/512/709/709537.png"
+                        alt="home"
+                        id="home-logo"
+                      ></img>
+                    </NavLink>
                   </div>
                 </div>
                 <div>
@@ -65,30 +68,43 @@ function ProfileButton({ user }) {
                     <UploadImageModal />
                   </div>
                 </div>
-                <div className="feed-button-container">
-                  <img
-                    onClick={openMenu}
-                    src={sessionUser.prof_pic_url}
-                    alt="fas fa-user-circle"
-                    className="fas fa-user-circle"
-                    id="prof-pic-button"
-                  />
-                </div>
-                <div className="drop-down-container">
-                  <div className="drop-down-container-child">
-                    {showMenu && (
-                      <ul id="profile-dropdown">
-                        <div>
-                          <NavLink to={`/users/${sessionUser.id}`}>
-                            <button type="button">Profile</button>
-                          </NavLink>
-                        </div>
-                        <button onClick={logout}>Log Out</button>
-                      </ul>
-                    )}
+                <div
+                  className="feed-button-container"
+                  id="profile-dropdown-container"
+                >
+                  <div id="prof-pic">
+                    <img
+                      onClick={openMenu}
+                      src={sessionUser.prof_pic_url}
+                      alt="fas fa-user-circle"
+                      className="fas fa-user-circle"
+                      id="prof-pic-button"
+                    />
                   </div>
+                  {/* <div className="drop-down-container"> */}
+                  {/* <div className="drop-down-container-child"> */}
+                  {showMenu && (
+                    <div className="drop-down-items">
+                      <div id="button-dropdown">
+                        <div className="profile-drop-down-container">
+                          <ul id="profile-dropdown">
+                            <NavLink
+                              to={`/users/${sessionUser.id}`}
+                              className="NavLink"
+                            >
+                              <button type="button">Profile</button>
+                            </NavLink>
+                            <div />
+                            <button onClick={logout}>Log Out</button>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
+              {/* </div> */}
+              {/* </div> */}
             </div>
           </div>
         </div>

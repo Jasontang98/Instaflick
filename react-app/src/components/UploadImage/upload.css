@@ -2,5 +2,301 @@ img {
     height: 50px;
     width: 50px;
     /* border: 1px solid black;
- border-radius: 27%; */
-}
+   border-radius: 27%; */
+  }
+
+  .upload-image-h1 {
+    display: block;
+    color: rgb(38 38 38);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    margin: -4px 0 -6px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+
+  .upload-image-container {
+    justify-content: center;
+    box-sizing: border-box;
+    align-items: flex-start;
+    display: flex;
+    min-width: 0;
+  }
+
+  .upload-image-container-child {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    z-index: 0;
+    box-sizing: content-box;
+    outline: none;
+    pointer-events: all;
+  }
+
+  .upload-image-main-container {
+    justify-content: center;
+    box-sizing: border-box;
+    align-items: flex-start;
+    display: flex;
+    min-width: 0;
+  }
+  .change-profile-button {
+    text-align: left;
+    border: 0;
+    color: rgb(0 149 246);
+    display: inline-block;
+    padding: 0;
+    position: relative;
+    background: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    text-transform: inherit;
+    width: auto;
+    margin: 0;
+  }
+
+  .edit-profile-main-container {
+    justify-content: center;
+    box-sizing: border-box;
+    align-items: flex-start;
+    display: flex;
+    min-width: 0;
+  }
+
+  .edit-profile-main-container-child {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    z-index: 0;
+    box-sizing: content-box;
+    outline: none;
+    pointer-events: all;
+  }
+
+  .upload-photo-modal-container {
+    min-height: 200px;
+    flex-shrink: 1;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    max-height: calc(100% - 40px);
+    position: relative;
+    width: 260px;
+    display: block;
+    pointer-events: all;
+    background-color: white;
+    overflow-x: auto;
+    border-radius: 12px;
+  }
+
+  .upload-photo-modal-container-child {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .upload-photo-modal-divider {
+    align-items: stretch;
+    border: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    font: inherit;
+    font-size: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  .upload-text-container {
+    align-items: stretch;
+    border: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    font: inherit;
+    font-size: 100%;
+    margin: 32px 16px 32px 16px;
+    word-wrap: anywhere;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    vertical-align: baseline;
+  }
+
+  .upload-text-h3 {
+    display: block;
+    color: rgb(38 38 38);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    margin: -4px 0 -6px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+
+  .upload-bottom-part-container {
+    align-items: stretch;
+    border: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    font: inherit;
+    font-size: 100%;
+    margin: 0;
+    margin-top: 16px;
+    padding: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  .upload-button-1 {
+    color: rgb(0 149 246);
+    font-weight: 700;
+    background-color: transparent;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid rgb(219 219 219);
+    cursor: pointer;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    /* padding-top: 1rem; */
+    min-height: 48px;
+    padding: 4px 50px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .upload-photo-button {
+    color: rgb(0 149 246);
+    font-weight: 700;
+    background-color: transparent;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid rgb(219 219 219);
+    cursor: pointer;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    min-height: 48px;
+    padding: 4px 8px;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 3;
+  }
+
+  .submit-upload-modal-button {
+    color: rgb(0 149 246);
+    font-weight: 700;
+    background-color: transparent;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    cursor: pointer;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    min-height: 48px;
+    padding: 4px 8px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .edit-cancel-button {
+    border-top: 1px solid rgb(219 219 219);
+    color: rgb(38 38 38);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: transparent;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    cursor: pointer;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    min-height: 48px;
+    padding: 4px 8px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .upload-photo-button2 {
+    color: rgb(0 149 246);
+    font-weight: 700;
+    background-color: transparent;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    margin-top: 2rem;
+    cursor: pointer;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    min-height: 48px;
+    padding: 4px 8px;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    align-content: center;
+  }
+
+  .edit-profile-bio-text-area-2 {
+    background: transparent;
+    border: 1px solid rgb(219 219 219);
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: rgb(38 38 38);
+    flex: 0 1 355px;
+    font-size: 16px;
+    height: 60px;
+    padding: 6px 10px;
+    resize: vertical;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    line-height: 14px;
+    max-width: 100%;
+    margin-left: 29px;
+  }
+
+  .error-ptag-upload {
+    color: red;
+  }
+
+  .edit-cancel-button:hover {
+    color: red;
+  }

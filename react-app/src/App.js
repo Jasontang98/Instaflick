@@ -11,7 +11,6 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
 import User from "./components/User/index";
 import * as sessionActions from "./store/session";
 import Images from "./components/Feed";
@@ -45,7 +44,6 @@ function App() {
       <Switch>
         <ProtectedRoute path="/users" exact={true}>
           <NavBar loaded={loaded} />
-          <UsersList />
         </ProtectedRoute>
 
         <ProtectedRoute path="/users/:userId" exact={true}>

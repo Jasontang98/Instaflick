@@ -2,12 +2,10 @@ import { getSingleImage, deleteSingleImage } from "../../store/images";
 import { getCommentsByImage, cleanComments } from "../../store/comments";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useHistory, Redirect } from "react-router-dom";
+import { useParams, useHistory, Redirect, NavLink } from "react-router-dom";
 import "./SingleImage.css";
 import EditImageModal from "../EditImage/";
 import Comments from "../Comments/Comments";
-import { getAllUsers } from "../../store/user";
-import { addALike, deleteALike } from "../../store/image-likes";
 
 const SingleImage = () => {
   const history = useHistory();
@@ -15,11 +13,9 @@ const SingleImage = () => {
   const { id } = useParams();
 
   const oneImage = useSelector((state) => state.images[id]);
-
   const sessionUser = useSelector((state) => state.session.user);
-  const account = useSelector((state) => state.session.user);
+
   const [isLoaded, setLoaded] = useState(false);
-  const [validationErrors, setValidationErrors] = useState([]);
 
   useEffect(() => {
     dispatch(getSingleImage(id))
@@ -28,7 +24,6 @@ const SingleImage = () => {
 
     return () => {
       dispatch(cleanComments());
-      dispatch(getAllUsers());
     };
   }, [id, dispatch]);
 
@@ -43,62 +38,75 @@ const SingleImage = () => {
 
   return (
     isLoaded && (
-      <>
-        <div className="tester">
-          <div className="images-background-image">
-            <div className="single-image-container3">
-              <p className="username">{oneImage?.user_id?.username}</p>
-              <img
-                alt="uploadedImage"
-                className="single-image-image"
-                src={oneImage.image_url}
-                title={oneImage.title}
-              />
-              <div>
-                {oneImage?.user_id === account?.id ? (
-                  <>
-                    <div>
-                      <EditImageModal />
-                    </div>
-                    <button
-                      className="single-image-submit-btn"
-                      id="delete-button"
-                      onClick={ImageDeleter}
-                    >
-                      Delete
-                    </button>
-                  </>
-                ) : (
-                  <></>
-                )}
+      <div className="single-image-arranger">
+        <div className="main-container-single-image">
+          <div className="main-container-single-image-child">
+            <div className="main-container-final">
+              <div className="single-image-left-side-container">
+                <img
+                  alt="uploadedImage"
+                  className="single-image-image2"
+                  src={oneImage.image_url}
+                  title={oneImage.title}
+                />
               </div>
-              <h3 className="description">{oneImage.description}</h3>
-            </div>
-            {oneImage.likes.filter((like) => {
-              return sessionUser.id === like.user_id;
-            }).length === 0 ? (
-              <img
-                className="like-button"
-                src="https://i.imgur.com/JEkOshg.png"
-                onClick={() => dispatch(addALike(oneImage, sessionUser.id))}
-                type="submit"
-                alt="like-button"
-              ></img>
-            ) : (
-              <img
-                className="like-button"
-                src="https://i.imgur.com/XXQN4Dk.png"
-                onClick={() => dispatch(deleteALike(oneImage, sessionUser.id))}
-                type="submit"
-                alt="dislike-button"
-              ></img>
-            )}
-            <div>{oneImage.likes.length} likes</div>
+              <div className="single-image-right-side-container">
+                <div className="right-side-profpic-container">
+                  <div className="username-container">
+                    <div className="username-container-child">
+                      <div className="username-container-grandchild">
+                        <NavLink
+                          className="username-navlink-singleimage"
+                          exact
+                          to={`/users/${oneImage.user_id}`}
+                        >
+                          <p className="username-single-image">
+                            {oneImage?.username}
+                          </p>
+                        </NavLink>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="name-above-description">
 
-            <Comments />
+                  <NavLink
+                    className="username-navlink-singleimage"
+                    exact
+                    to={`/users/${oneImage.user_id}`}
+                  >
+                    <p className="username-single-image">{oneImage?.username}</p>
+                  </NavLink>
+                </div>
+                <div className="single-image-description">
+                  <p className="description">{oneImage.description}</p>
+                </div>
+                <div className="edit-delete-button">
+                  {oneImage?.user_id === sessionUser?.id ? (
+                    <>
+                      <div className="single-edit-button">
+                        <EditImageModal />
+                      </div>
+                      <div className="single-delete-button">
+                        <button
+
+                          id="delete-button"
+                          onClick={ImageDeleter}
+                        >
+                          Delete Post
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+                <Comments />
+              </div>
+            </div>
           </div>
         </div>
-      </>
+      </div>
     )
   );
 };

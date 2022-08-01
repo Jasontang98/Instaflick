@@ -1,16 +1,16 @@
-export const GET_USERS = '/api/users';
-export const GET_USER = '/api/users/:id';
+export const GET_USERS = "/api/users";
+export const GET_USER = "/api/users/:id";
 // export const PUT_USER = '/api/users/:id';
 // export const DELETE_USER = '/api/users/:id';
 
 const getUsers = (users) => ({
-	type: GET_USERS,
-	users,
+  type: GET_USERS,
+  users,
 });
 
 const getUser = (user) => ({
-	type: GET_USER,
-	user,
+  type: GET_USER,
+  user,
 });
 
 // const editUser = (user) => ({
@@ -46,21 +46,21 @@ const getUser = (user) => ({
 
 // GET ALL USERS
 export const getAllUsers = () => async (dispatch) => {
-	const response = await fetch('/api/users');
-	if (response.ok) {
-		const users = await response.json();
-		dispatch(getUsers(users));
-	}
+  const response = await fetch("/api/users");
+  if (response.ok) {
+    const users = await response.json();
+    dispatch(getUsers(users));
+  }
 };
 
 //GET SINGLE USER
 export const getSingleUser = (id) => async (dispatch) => {
-	const response = await fetch(`/api/users/${id}`);
-	if (response.ok) {
-		const user = await response.json();
-		dispatch(getUser(user));
-    return user
-	}
+  const response = await fetch(`/api/users/${id}`);
+  if (response.ok) {
+    const user = await response.json();
+    dispatch(getUser(user));
+    return user;
+  }
 };
 
 //DELETE SINGLE USER
@@ -78,22 +78,22 @@ export const getSingleUser = (id) => async (dispatch) => {
 const initialState = {};
 
 export default function userReducer(state = initialState, action) {
-	let newState;
-	switch (action.type) {
-		case GET_USERS:
+  let newState;
+  switch (action.type) {
+    case GET_USERS:
       const users = action.users;
-			newState = { ...state };
-			users.users.forEach((user) => {
-				newState[user.id] = user;
-			});
-			return newState;
-		case GET_USER:
-			return { [action.user.id]: action.user };
-		// case PUT_USER:
-		// 	return { ...state, [action.user.id]: { ...action.user } };
-		// case DELETE_USER:
-		// 	return delete { ...state, [action.user.id]: action.user.id };
-		default:
-			return state;
-	}
+      newState = { ...state };
+      users.users.forEach((user) => {
+        newState[user.id] = user;
+      });
+      return newState;
+    case GET_USER:
+      return { [action.user.id]: action.user };
+    // case PUT_USER:
+    // 	return { ...state, [action.user.id]: { ...action.user } };
+    // case DELETE_USER:
+    // 	return delete { ...state, [action.user.id]: action.user.id };
+    default:
+      return state;
+  }
 }
