@@ -1,19 +1,39 @@
-#How to Install and Run the Site
-Git clone the repository or download the zip file onto your local machine via Ubuntu.
+# Instaflick
 
-git clone https://github.com/Jasontang98/Instaflick.git
+## Link to Live Site
 
-Make sure to unzip the file if the latter method was used. Launch VSCode with your Ubuntu terminal inside of the project folder. Open up a VSCode terminal for the project folder, and make sure that all commands are operating within the shell with pipenv shell. The list of the necessary installations are in the requirements.txt file at the base of the project's directory. Use pipenv install to install all the necessary dependencies for the Python backend. Once those dependencies are installed, make sure to install the database and start the backend server via
+https://instaflick-app.herokuapp.com/login
 
-flask db upgrade
+## About Liqr
 
-flask seed all
+Welcome to Instaflick! Instaflick is an Instagram clone made for users to socialize. Users can post images, comment on other user's posts, and interact with one another.
 
-flask run
+## Splash Page / Login Page
+![image](https://user-images.githubusercontent.com/100460237/182057373-25195e3d-cd46-4646-8289-6070394add9e.png)
 
-Create a new terminal, and change the directory into the front end titled 'react-app'. npm install all the frontend dependencies to run the React frontend. Once that is completed, npm start will launch the app onto the designated browser.
+## Signup Page
+![image](https://user-images.githubusercontent.com/100460237/182057464-caba09ef-2222-4c5c-8c64-476ffd1cb41a.png)
 
-Launched on Heroku
+## Upload Page
+![image](https://user-images.githubusercontent.com/100460237/182058618-79428d11-76a4-42f2-8f81-0c9cf388812e.png)
+
+## Feed Page
+![image](https://user-images.githubusercontent.com/100460237/182058808-ba8e25dc-2bfb-4d67-a267-396c67fec01e.png)
+
+## Single Image Page
+![image](https://user-images.githubusercontent.com/100460237/182060340-9b99ffbf-d5cc-49d8-9df5-f98fa5166abd.png)
+
+## User Profile
+![image](https://user-images.githubusercontent.com/100460237/182059178-9962f507-3f78-499b-bf95-dda694a7acf8.png)
+
+## Instillation 
+* ```git clone https://github.com/Jasontang98/Instaflick.git```
+* ```npm install``` in the /react folder
+* ```pipenv shell``` in the /root folder
+* ```pipenv install```
+* ```flask run``` to start back end
+* cd into /front end folder
+* ```npm start```
 
 ## Technologies Used
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
