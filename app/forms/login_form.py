@@ -22,6 +22,12 @@ def password_matches(form, field):
     if not user.check_password(password):
         raise ValidationError('Password was incorrect.')
 
+def email_does_not_exist(form, field):
+    email = field.data
+    db_email = User.query.filter(User.email != email).first()
+    if not db_email:
+        raise ValidationError('Email not found.')
+
 
 class LoginForm(FlaskForm):
     email = StringField('email', validators=[DataRequired(), user_exists])
