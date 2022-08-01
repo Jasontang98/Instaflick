@@ -13,6 +13,7 @@ const SingleImage = () => {
   const { id } = useParams();
 
   const oneImage = useSelector((state) => state.images[id]);
+
   const sessionUser = useSelector((state) => state.session.user);
 
   const [isLoaded, setLoaded] = useState(false);
