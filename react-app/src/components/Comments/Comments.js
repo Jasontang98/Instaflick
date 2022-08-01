@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useHistory, Redirect } from "react-router-dom";
+import { useParams, useHistory, Redirect, NavLink } from "react-router-dom";
 import EditComment from "../EditComment";
+// import { getSingleImage } from "../../store/images";
+import { addALike, deleteALike } from "../../store/image-likes";
+import "./comments.css";
 
 import {
   getCommentsByImage,
@@ -15,7 +18,8 @@ const Comments = ({ setShowModal }) => {
   const dispatch = useDispatch();
 
   const { id } = useParams();
-
+  const oneImage = useSelector((state) => state.images[id]);
+  const sessionUser = useSelector((state) => state.session.user);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -51,7 +55,7 @@ const Comments = ({ setShowModal }) => {
     if (comment.length > 500) errors.push("Comment is too long");
     if (errors.length) {
       setValidationErrors(errors);
-      return;
+      return errors;
     }
 
     const data = {
@@ -70,40 +74,59 @@ const Comments = ({ setShowModal }) => {
   return (
     isLoaded && (
       <>
-        <h1 className="comments-single-image">Comments</h1>
-        <div className="comments">
+        <div className="all-comment">
           {comments.map((comment) => {
             return (
               <div className="new-comment-div" key={comment.id}>
-                <p className="ptagz-comments">{comment?.comment}</p>
-                <p className="ptagz-username">{comment?.username}</p>
-                {users.map((user) => {
-                  return (
-                    <>
-                      <div className="prof-pic-contain" key={user.prof_pic_url}>
-                        {user?.id === comment?.user_id ? (
-                          <>
-                            <img
-                              src={user.prof_pic_url}
-                              alt="prof pic"
-                              key={user.id}
-                            ></img>
-                            <div>{comment.likes}</div>
-                          </>
-                        ) : (
-                          <></>
-                        )}
-                      </div>
-                    </>
-                  );
-                })}
+                <div className="comment-name-description-profile">
+                  {users.map((user) => {
+                    return (
+                      <>
+                        <div className="all-comment">
+                          <div className="prof-pic-contain" key={user.prof_pic_url}>
+                            {user?.id === comment?.user_id ? (
+                              <>
+                                <div className="comment-container">
+                                  <NavLink
+                                    exact
+                                    to={`/users/${user.id}`}>
+                                    <img
+                                      id="comment-prof-pic"
+                                      src={user.prof_pic_url}
+                                      alt="prof pic"
+                                      key={user.id}
+                                    ></img>
+                                  </NavLink>
+                                  <div className="comment-name">
+                                    <NavLink
+                                      exact
+                                      className="comment-navlink"
+                                      to={`/users/${user.id}`}>
+                                      <p>{comment?.username}</p>
+                                    </NavLink>
+                                  </div>
+                                  <div className="comment-comment">
 
-                <div className="dlt-button-container">
+                                    <p className="ptagz-comments">{comment?.comment}</p>
+                                  </div>
+                                </div>
+                              </>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
+                        </div>
+                      </>
+                    );
+                  })}
+                </div>
+                <div className="edit-comment-delete">
                   {comment?.user_id === account.id ? (
                     <>
                       <div>
                         <EditComment editedComment={comment} />
                       </div>
+
                       <button
                         className="delete-comment-btn"
                         onClick={() =>
@@ -118,19 +141,54 @@ const Comments = ({ setShowModal }) => {
                   ) : (
                     <></>
                   )}
+
                 </div>
               </div>
             );
           })}
         </div>
         <form onSubmit={handleSubmit}>
-          <ul>
-            {validationErrors.map((error, idx) => (
-              <li className="errors-signup" key={idx}>
+          <div className="errors-handler-login">
+            {validationErrors.map((error, ind) => (
+              <div className="error-ptag" key={ind}>
                 {error}
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
+          <div className="single-like">
+            <div id="like-heart">
+              {oneImage.likes.filter((like) => {
+                return sessionUser.id === like.user_id;
+              }).length === 0 ? (
+
+
+
+                <img
+                  className="like-button"
+                  src="https://i.imgur.com/JEkOshg.png"
+                  onClick={() => dispatch(addALike(oneImage, sessionUser.id))}
+                  type="submit"
+                  alt="like-button"
+                ></img>
+
+              ) : (
+                <img
+                  className="like-button"
+                  src="https://i.imgur.com/XXQN4Dk.png"
+                  onClick={() => dispatch(deleteALike(oneImage, sessionUser.id))}
+                  type="submit"
+                  alt="dislike-button"
+                ></img>
+
+              )}
+            </div>
+            <div className="feed-likes-number">
+              {oneImage.likes.length === 1
+                ? `${oneImage.likes.length} like`
+                : `${oneImage.likes.length} likes`}
+            </div>
+          </div>
+          <div className="comment-submit-container">
           <textarea
             className="comment-text-area"
             placeholder="Add a comment"
@@ -143,8 +201,9 @@ const Comments = ({ setShowModal }) => {
             onClick={notLoggedIn}
             type="submit"
           >
-            Submit
+            Post
           </button>
+          </div>
         </form>
       </>
     )

@@ -15,7 +15,7 @@
 }
 
 .login-sections {
-	min-height: 100vh;
+	min-height: 93vh;
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
@@ -590,3 +590,111 @@
 	font: inherit;
 	vertical-align: baseline;
 }
+.login-page-footer {
+	background-color: rgba(250, 250, 250, 1);
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.footer-container-login {
+	margin-bottom: 52px;
+	flex: 0 0 auto;
+	justify-content: flex-start;
+	flex-direction: column;
+	align-items: stretch;
+	align-content: stretch;
+	display: flex;
+	border: 0 solid #000;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+.about-container {
+	margin-top: 24px;
+	flex: 0 0 auto;
+	justify-content: flex-start;
+	flex-direction: column;
+	align-items: stretch;
+	align-content: stretch;
+	display: flex;
+	border: 0 solid #000;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+.about-container-child {
+	flex-wrap: wrap;
+	flex: 0 0 auto;
+	justify-content: center;
+	flex-direction: row;
+	align-items: stretch;
+	align-content: stretch;
+	display: flex;
+	border: 0 solid #000;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+.about-navlink-container {
+	margin-right: 8px;
+	margin-left: 8px;
+	flex: 0 0 auto;
+	justify-content: flex-start;
+	flex-direction: column;
+	align-items: stretch;
+	align-content: stretch;
+	border: 0 solid #000;
+	box-sizing: border-box;
+	margin: 0;
+	padding-left: 2rem;
+	position: relative;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+.github-name-footer {
+	text-decoration: none;
+	color: rgba(0, 55, 107, 1);
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
+	cursor: pointer;
+}
+
+.our-names {
+	display: block;
+	color: rgba(142, 142, 142, 1);
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 16px;
+	margin: -2px 0 -3px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+		Arial, sans-serif;
+	align-items: stretch;
+	border: 0 solid #000;
+	box-sizing: border-box;
+	flex-direction: column;
+	flex-shrink: 0;
+	padding: 0;
+	position: relative;
+	font: inherit;
+	vertical-align: baseline;
+}
+.login-error-messages {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	/* padding: 10px; */
+	color: #ed4956;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }

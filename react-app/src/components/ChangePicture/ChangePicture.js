@@ -14,7 +14,7 @@ const ChangePicture = ({ setShowModal }) => {
   const [username] = useState(user?.username);
   const [description] = useState(user?.description);
   const [file, setFile] = useState(user?.prof_pic_url);
-  const [validationErrors, setValidationErrors] = useState([]);
+  const [setValidationErrors] = useState([]);
 
   const history = useHistory();
 
@@ -75,6 +75,8 @@ const ChangePicture = ({ setShowModal }) => {
                   >
                     Upload Photo{" "}
                   </div>
+                  <strong>{file?.name}</strong>
+                  <div />
                   <div className="upload-photo-button-3">
                     <input
                       ref={hiddenRef}
@@ -102,7 +104,6 @@ const ChangePicture = ({ setShowModal }) => {
                     Cancel
                   </button>
                 </div>
-                <div></div>
               </div>
             </div>
           </div>

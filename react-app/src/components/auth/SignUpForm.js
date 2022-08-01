@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import { signUp } from "../../store/session";
@@ -15,8 +15,8 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
 
-    if (username.length < 6) {
-      setErrors(['Username must be at least 6 characters.'])
+    if (username.length > 40) {
+      setErrors(['Username must be between 6 and 40 characters.'])
     }
 
     if (password === repeatPassword) {
@@ -61,6 +61,7 @@ const SignUpForm = () => {
                 <div className="instaflick-container">
                   <div className="instaflick-logo-container">
                     <img
+                      alt=""
                       className="instaflick-logo"
                       src="https://i.imgur.com/WZMyYs8.png"
                     />

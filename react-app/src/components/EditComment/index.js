@@ -7,7 +7,7 @@ function EditCommentModal({ editedComment }) {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Edit Comment</button>
+      <button id="edit-comment-button" onClick={() => setShowModal(true)}>Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditComment
