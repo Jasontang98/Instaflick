@@ -51,6 +51,7 @@ const LoginForm = () => {
 						<div className="login-left-container">
 							<div className="login-images">
 								<img
+									alt=''
 									className="login-image-two"
 									src="https://www.instagram.com/static/images/homepage/screenshots/screenshot4.png/a4fd825e3d49.png"
 								/>
@@ -68,7 +69,7 @@ const LoginForm = () => {
 									</div>
 								</div>
 								{errors.map((error, ind) => (
-									<div key={ind}>{error}</div>
+									<div className='login-error-messages' key={ind}>{error}</div>
 								))}
 								<div className="login-card">
 									<form onSubmit={onLogin} className="login-form-form">
@@ -152,6 +153,41 @@ const LoginForm = () => {
 					</article>
 				</main>
 			</section>
+			<footer className="login-page-footer">
+				<div className="footer-container-login">
+					<div className="about-container">
+						<div className="about-container-child">
+							<div className="about-navlink-container">
+								<a
+									className="github-name-footer"
+									target="_blank"
+									href="https://github.com/RoubenGh"
+								>
+									<div className="our-names">Rouben Ghambaryan</div>
+								</a>
+							</div>
+							<div className="about-navlink-container">
+								<a
+									className="github-name-footer"
+									target="_blank"
+									href="https://github.com/Jasontang98"
+								>
+									<div className="our-names">Jason Tang</div>
+								</a>
+							</div>
+							<div className="about-navlink-container">
+								<a
+									className="github-name-footer"
+									target="_blank"
+									href="https://github.com/e-hashimoto"
+								>
+									<div className="our-names">Exequiel Hashimoto</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
 		</div>
 	);
 };

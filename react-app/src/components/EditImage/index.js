@@ -7,7 +7,7 @@ function EditImageModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Edit</button>
+      <button id="single-image-edit" onClick={() => setShowModal(true)}>Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditImage setShowModal={setShowModal} />
