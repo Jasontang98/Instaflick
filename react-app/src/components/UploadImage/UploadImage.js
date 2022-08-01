@@ -17,7 +17,6 @@ const UploadImage = ({ setShowModal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!user) history.push("/login");
     const errors = [];
 
     if (description.length > 500) errors.push("Description is too long");

@@ -51,7 +51,7 @@ const EditUser = () => {
   const confirmDelete = async () => {
     // eslint-disable-next-line no-restricted-globals
     if (confirm("Are you sure you want to remove your account from Instaflick?")) {
-      dispatch(deleteSingleUser(user?.id)).then(history.push("/login"));
+      dispatch(deleteSingleUser(user?.id)).then(history.push("/login")).then(window.location.reload())
     }
   };
 
